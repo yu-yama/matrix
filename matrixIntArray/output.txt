@@ -1,0 +1,328 @@
+./MAIN_CPP
+Start: Constructor (int, int): 2, 2
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+End  : Constructor (int, int): 2, 2
+Start: to_string
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+End r: to_string
+0, 0
+0, 0
+Start: to_string
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+End r: to_string
+0, 0
+0, 0
+Start: Constructor (vector< vector<int> >)
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End  : Constructor (vector< vector<int> >)
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+2
+000010
+0x7ffeeb5627d0
+0x7ffeeb5627d0
+000030
+Start: to_string
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+End r: to_string
+0, 1
+1, 2
+000050
+Start: Copy Constructor
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End  : Copy Constructor
+Start: assign *= Matrix
+Start: Copy Constructor
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End  : Copy Constructor
+Start: binary * Matrix
+Start: Constructor (int, int): 2, 2
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+End  : Constructor (int, int): 2, 2
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End r: binary * Matrix
+Start: assign =
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End r: assign =
+End r: assign *= Matrix
+000070
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+1879048194
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+2
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+1879048197
+Start: Copy Constructor
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End  : Copy Constructor
+Start: assign *= Matrix
+Start: Copy Constructor
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End  : Copy Constructor
+Start: binary * Matrix
+Start: Constructor (int, int): 2, 2
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+End  : Constructor (int, int): 2, 2
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 0
+End r: const int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: const int& at(int, int): 0, 1
+End r: const int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 0
+End r: const int& at(int, int): 1, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: const int& at(int, int): 1, 1
+End r: const int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End r: binary * Matrix
+Start: assign =
+Start: resize(int, int): 2, 2
+End  : resize(int, int): 2, 2
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+End r: assign =
+End r: assign *= Matrix
+000090
+Start: int& at(int, int): 0, 0
+End r: int& at(int, int): 0, 0
+268435475
+Start: int& at(int, int): 0, 1
+End r: int& at(int, int): 0, 1
+-268435434
+Start: int& at(int, int): 1, 0
+End r: int& at(int, int): 1, 0
+268435501
+Start: int& at(int, int): 1, 1
+End r: int& at(int, int): 1, 1
+-268435404
