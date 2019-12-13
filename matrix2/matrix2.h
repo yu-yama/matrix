@@ -118,7 +118,7 @@ public:
     AugmentedMatrix(const AugmentedMatrix& p);
 
     typename std::vector<T>::size_type row() const { return n; }
-    typename std::pair<typename std::vector<T>::size_type, typename std::vector<T>::size_type> column() const { return make_pair(ml, mr); }
+    typename std::pair<typename std::vector<T>::size_type, typename std::vector<T>::size_type> column() const { return {ml, mr}; }
 
     std::pair< std::vector<T>, std::vector<T> > at_row (typename std::vector<T>::size_type r) const;
     std::vector<T> at_column (typename std::vector<T>::size_type c) const;
