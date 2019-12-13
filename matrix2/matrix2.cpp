@@ -277,6 +277,35 @@ Matrix<T> Matrix<T>::gauss_jordan() const {
 }
 
 template <class T>
+T Matrix<T>::det() const {
+    if (n != m) {
+        ostringstream errMsg;
+        errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    Matrix<T> temp(*this);
+    typename vector<T>::size_type y = 0, x = 0;
+    T ans = 1;
+    while (y < n && x < m) {
+        typename vector<T>::size_type mPos = 0;
+        T mVal = 0;
+        for (typename vector<T>::size_type i = y; i < n; ++i) if (mVal < abs(temp.at(i, x))) mPos = i, mVal = abs(temp.at(i, x));
+        if (!mVal) ++x;
+        else {
+            for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j)), ans *= -1;
+            for (typename vector<T>::size_type i = y + 1; i < n; ++i) {
+                T f = temp.at(i, x) / temp.at(y, x);
+                temp.at(i, x) = 0;
+                for (typename vector<T>::size_type j = x + 1; j < m; ++j) temp.at(i, j) -= temp.at(y, j) * f;
+            }
+            ++y, ++x;
+        }
+    }
+    for (typename vector<T>::size_type i = 0; i < n; ++i) ans *= temp.at(i, i);
+    return ans;
+}
+
+template <class T>
 string Matrix<T>::to_string() const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: to_string\n";
     ostringstream s;

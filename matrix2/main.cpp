@@ -39,8 +39,12 @@ int main() {
     cout << "000270\n";
     for (int i = 0; i < 2; ++i) for (int j = 0; j < 2; ++j) cout << a.at(i, j) << '\n';
     Matrix<double> e({{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}});
-    cout << e << e.gauss() << e.gauss_jordan();
+    cout << "000290\n" << e << e.gauss() << e.gauss_jordan();
     Matrix<double> f({{2, -1, 0}, {-1, 2, -1}, {3, 0, -1}});
-    cout << f << f.gauss() << f.gauss_jordan();
+    cout << "000310\n" << f << f.gauss() << f.gauss_jordan();
+    Matrix<double> g({{3, 5}, {-2, 4}});
+    cout << "000330\n" << g << g.det() << endl;
+    Matrix<double> h({{-2, 1, 4}, {3, 5, -7}, {1, 6, 2}});
+    cout << "000350\n" << h << h.det() << endl;
     return 0;
 }

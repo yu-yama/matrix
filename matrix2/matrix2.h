@@ -68,7 +68,7 @@ public:
 
     Matrix gauss() const;
     Matrix gauss_jordan() const;
-    // T det() const;
+    T det() const;
     // Matrix inv() const;
     // Matrix pow() const;
     //
