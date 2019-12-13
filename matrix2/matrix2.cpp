@@ -257,13 +257,6 @@ string Matrix<T>::to_string() const {
     // }
 }
 
-template <typename T>
-ostream& operator<<(ostream& s, const Matrix<T>& x) {
-    if (___MATRIXINTARRAY_DEBUG_) cout << "Start: ostream <<\n";
-    return s << x.to_string();
-    if (___MATRIXINTARRAY_DEBUG_) cout << "End r: ostream <<\n";
-}
-//
 // template <typename S>
 // istream& operator>>(istream& s,       Matrix<S>& x) {
 //     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: istream >>\n";
@@ -272,14 +265,14 @@ ostream& operator<<(ostream& s, const Matrix<T>& x) {
 //     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: istream >>\n";
 // }
 
-// template class Matrix<short>;
-// template class Matrix<unsigned short>;
-// template class Matrix<int>;
-// template class Matrix<unsigned int>;
-// template class Matrix<long>;
-// template class Matrix<unsigned long>;
-// template class Matrix<long long>;
-// template class Matrix<unsigned long long>;
-// template class Matrix<float>;
-// template class Matrix<double>;
-// template class Matrix<long double>;
+template class Matrix<short>;
+template class Matrix<unsigned short>;
+template class Matrix<int>;
+template class Matrix<unsigned int>;
+template class Matrix<long>;
+template class Matrix<unsigned long>;
+template class Matrix<long long>;
+template class Matrix<unsigned long long>;
+template class Matrix<float>;
+template class Matrix<double>;
+template class Matrix<long double>;

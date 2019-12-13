@@ -11,7 +11,7 @@ template <typename T>
 class Matrix;
 
 template <typename T>
-std::ostream& operator<<(std::ostream& s, const Matrix<T>& x);
+std::ostream& operator<<(std::ostream&, const Matrix<T>&);
 
 template <typename T>
 class Matrix {
@@ -72,7 +72,7 @@ public:
     std::string to_string() const;
     // std::string to_latex() const;
 
-    friend std::ostream& operator<< <T>(std::ostream& s, const Matrix<T>& x);
+    friend std::ostream& operator<< <> (std::ostream&, const Matrix&);
 
     // friend std::istream& operator>>(std::istream& s,       Matrix& x) {
     //     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: std::istream >>\n";
@@ -81,6 +81,13 @@ public:
     //     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: std::istream >>\n";
     // }
 };
+
+template <typename T>
+std::ostream& operator<<(std::ostream& s, const Matrix<T>& x) {
+    if (___MATRIXINTARRAY_DEBUG_) std::cout << "Start: ostream <<\n";
+    if (___MATRIXINTARRAY_DEBUG_) std::cout << "End r: ostream <<\n";
+    return s << x.to_string();
+}
 
 // template <typename T>
 // std::std::ostream& operator<<(std::std::ostream& s, const std::Matrix<T>& x);
