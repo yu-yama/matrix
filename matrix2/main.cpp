@@ -32,6 +32,7 @@ int main() {
     cout << "000190\n" << a;
     a *= a;
     cout << "000210\n" << a;
+    cout << "000220\n" << a.pow(3) << a;
     cout << "000230\n";
     for (int i = 0; i < 2; ++i) for (int j = 0; j < 2; ++j) cout << a.at(i, j) << '\n';
     a *= b;

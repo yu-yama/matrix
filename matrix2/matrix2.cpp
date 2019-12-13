@@ -310,6 +310,23 @@ string Matrix<T>::to_string() const {
     // }
 }
 
+template <class T>
+Matrix<T> Matrix<T>::pow(int r) const {
+    if (n != m) {
+        ostringstream errMsg;
+        errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    // if (r < 0) return inv().pow(-r);
+    // else if (!r) return identity_matrix(n, (T)1);
+    if (!r) return identity_matrix(n, (T)1);
+    else if (r % 2) return pow(r - 1) * (*this);
+    else {
+        Matrix<T> t = pow(r / 2);
+        return t * t;
+    }
+}
+
 template class Matrix<short>;
 // template class Matrix<unsigned short>;
 template class Matrix<int>;

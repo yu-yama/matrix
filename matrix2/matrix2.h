@@ -73,7 +73,7 @@ public:
     Matrix gauss_jordan() const;
     T det() const;
     // Matrix inv() const;
-    // Matrix pow() const;
+    Matrix pow(int r) const;
     //
     std::string to_string() const;
     // std::string to_latex() const;
@@ -95,6 +95,13 @@ std::istream& operator>>(std::istream& s,       Matrix<T>& x) {
     for (typename std::vector<T>::size_type i = 0; i < x.row(); ++i) for (typename std::vector<T>::size_type j = 0; j < x.column(); ++j) s >> x.at(i, j);
     if (___MATRIXINTARRAY_DEBUG_) std::cout << "End r: istream >>\n";
     return s;
+}
+
+template <typename T>
+Matrix<T> identity_matrix(typename std::vector<T>::size_type n, T val) {
+    Matrix<T> t(n, n);
+    for (typename std::vector<T>::size_type i = 0; i < n; ++i) t.at(i, i) = val;
+    return t;
 }
 
 // template <typename T>
