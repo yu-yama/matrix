@@ -504,3 +504,15 @@ AugmentedMatrix<T> AugmentedMatrix<T>::gauss_jordan() const {
     }
     return temp;
 }
+
+template class AugmentedMatrix<short>;
+// template class AugmentedMatrix<unsigned short>;
+template class AugmentedMatrix<int>;
+// template class AugmentedMatrix<unsigned int>;
+template class AugmentedMatrix<long>;
+// template class AugmentedMatrix<unsigned long>;
+template class AugmentedMatrix<long long>;
+// template class AugmentedMatrix<unsigned long long>;
+template class AugmentedMatrix<float>;
+template class AugmentedMatrix<double>;
+template class AugmentedMatrix<long double>;
