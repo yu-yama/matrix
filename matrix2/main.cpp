@@ -50,8 +50,8 @@ int main() {
 
     Matrix<double> aa1({{1, 3, -2, 0, 2, 0}, {2, 6, -5, -2, 4, -3}, {0, 0, 5, 10, 0, 15}, {2, 6, 0, 8, 4, 18}});
     cout << aa1.row() << endl << aa1.column() << endl;
-    vector< vector<double> > aa2({{0, 0}, {-1, 0}, {5, 0}, {6, 0}});
-    cout << aa2.size() << endl;
+    Matrix<double> aa2({{0, 0}, {-1, 0}, {5, 0}, {6, 0}});
+    cout << aa2.row() << endl << aa2.column() << endl;
     // AugmentedMatrix<double> aa(aa1, aa2);
     // cout << "000370\n" << aa.left() << aa.right();
     // cout << "000390\n" << aa.gauss().left() << aa.gauss().right();
