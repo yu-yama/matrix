@@ -255,6 +255,27 @@ Matrix<T> Matrix<T>::gauss() const {
     return temp;
 }
 
+
+template <class T>
+Matrix<T> Matrix<T>::gauss_jordan() const {
+    Matrix<T> temp = gauss();
+    vector<typename vector<T>::size_type> lPos;
+    lPos.reserve(m);
+    typename vector<T>::size_type y = 0;
+    for (typename vector<T>::size_type j = 0; y < n && j < m; ++j) if (temp.at(y, j)) lPos.push_back(j), ++y;
+    --y;
+    for (; y >= 0 && y < n; --y) {
+        typename vector<T>::size_type x = lPos.at(y);
+        for (typename vector<T>::size_type j = x + 1; j < m; ++j) temp.at(y, j) /= temp.at(y, x);
+        temp.at(y, x) = 1;
+        for (typename vector<T>::size_type i = 0; i < y; ++i) {
+            for (typename vector<T>::size_type j = x + 1; j < m; ++j) temp.at(i, j) -= temp.at(y, j) * temp.at(i, x);
+            temp.at(i, x) = 0;
+        }
+    }
+    return temp;
+}
+
 template <class T>
 string Matrix<T>::to_string() const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: to_string\n";
