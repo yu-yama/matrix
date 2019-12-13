@@ -9,7 +9,7 @@ int main() {
     Matrix<int> a(2, 2);
     cout << "000010\n" << a.to_string();
     cout << a;
-    cin >> a;
+    // cin >> a;
     cout << "000020\n" << a;
     Matrix<int> b({{5, 6}, {7, 8}});
     cout << "000030\n";
@@ -38,5 +38,7 @@ int main() {
     cout << "000250\n" << a;
     cout << "000270\n";
     for (int i = 0; i < 2; ++i) for (int j = 0; j < 2; ++j) cout << a.at(i, j) << '\n';
+    Matrix<double> e({{2, -1, 0}, {-1, 2, -1}, {0, -1, 2}});
+    cout << e << e.gauss();
     return 0;
 }

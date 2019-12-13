@@ -233,15 +233,27 @@ bool Matrix<T>::operator!=(const Matrix<T>& p) const {
     return !(*this == p);
 }
 
-// template <class T>
-// Matrix<T> Matrix<T>::row_echelon() const {
-//     ;
-// }
-//
-// template <class T>
-// Matrix<T> Matrix<T>::reduced_row_echelon() const {
-//     ;
-// }
+template <class T>
+Matrix<T> Matrix<T>::gauss() const {
+    Matrix<T> temp(*this);
+    typename vector<T>::size_type y = 0, x = 0;
+    while (y < n && x < m) {
+        typename vector<T>::size_type mPos = 0;
+        T mVal = 0;
+        for (typename vector<T>::size_type i = y; i < n; ++i) if (mVal < abs(temp.at(i, x))) mPos = i, mVal = abs(temp.at(i, x));
+        if (!mVal) ++x;
+        else {
+            for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j));
+            for (typename vector<T>::size_type i = y + 1; i < n; ++i) {
+                T f = temp.at(i, x) / temp.at(y, x);
+                temp.at(i, x) = 0;
+                for (typename vector<T>::size_type j = x + 1; j < m; ++j) temp.at(i, j) -= temp.at(y, j) * f;
+            }
+            ++y, ++x;
+        }
+    }
+    return temp;
+}
 
 template <class T>
 string Matrix<T>::to_string() const {
@@ -258,13 +270,13 @@ string Matrix<T>::to_string() const {
 }
 
 template class Matrix<short>;
-template class Matrix<unsigned short>;
+// template class Matrix<unsigned short>;
 template class Matrix<int>;
-template class Matrix<unsigned int>;
+// template class Matrix<unsigned int>;
 template class Matrix<long>;
-template class Matrix<unsigned long>;
+// template class Matrix<unsigned long>;
 template class Matrix<long long>;
-template class Matrix<unsigned long long>;
+// template class Matrix<unsigned long long>;
 template class Matrix<float>;
 template class Matrix<double>;
 template class Matrix<long double>;

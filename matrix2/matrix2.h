@@ -66,8 +66,8 @@ public:
     bool operator==(const Matrix& p) const;
     bool operator!=(const Matrix& p) const;
 
-    // Matrix row_echelon() const;
-    // Matrix reduced_row_echelon() const;
+    Matrix gauss() const;
+    // Matrix gauss_jordan() const;
     // T det() const;
     // Matrix inv() const;
     // Matrix pow() const;
