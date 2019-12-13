@@ -452,3 +452,13 @@ void AugmentedMatrix<T>::resize(typename vector<T>::size_type nn, typename vecto
     ml = mml;
     mr = mmr;
 }
+
+template <class T>
+bool AugmentedMatrix<T>::operator==(const AugmentedMatrix& p) const {
+    return (matl == p.matl && matr == p.matr);
+}
+
+template <class T>
+bool AugmentedMatrix<T>::operator!=(const AugmentedMatrix& p) const {
+    return !(*this == p);
+}

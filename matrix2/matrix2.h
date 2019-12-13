@@ -131,6 +131,9 @@ public:
     Matrix<T> right() const;
 
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mml, typename std::vector<T>::size_type mmr);
+
+    bool operator==(const AugmentedMatrix& p) const;
+    bool operator!=(const AugmentedMatrix& p) const;
 };
 
 #endif
