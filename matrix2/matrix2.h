@@ -117,10 +117,20 @@ public:
     AugmentedMatrix(Matrix<T> mmatl, Matrix<T> mmatr);
     AugmentedMatrix(const AugmentedMatrix& p);
 
-    void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mml, typename std::vector<T>::size_type mmr);
+    typename std::vector<T>::size_type row() const { return n; }
+    typename std::pair<typename std::vector<T>::size_type, typename std::vector<T>::size_type> column() const { return make_pair(ml, mr); }
+
+    std::pair< std::vector<T>, std::vector<T> > at_row (typename std::vector<T>::size_type r) const;
+    std::vector<T> at_column (typename std::vector<T>::size_type c) const;
+    std::vector<T> at_columnl(typename std::vector<T>::size_type c) const;
+    std::vector<T> at_columnr(typename std::vector<T>::size_type c) const;
+    T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c);
+    const T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c) const;
 
     Matrix<T> left() const;
     Matrix<T> right() const;
+
+    void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mml, typename std::vector<T>::size_type mmr);
 };
 
 #endif
