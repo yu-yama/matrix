@@ -201,12 +201,12 @@ Matrix<T> Matrix<T>::operator*(T p) const {
     return t;
 }
 
-template <class T>
-Matrix<T> operator*(T n, const Matrix<T>& p) {
-    if (___MATRIXINTARRAY_DEBUG_) cout << "Start: friend binary * Scalar\n";
-    if (___MATRIXINTARRAY_DEBUG_) cout << "End r: friend binary * Scalar\n";
-    return p * n;
-}
+// template <class T>
+// Matrix<T> operator*(T n, const Matrix<T>& p) {
+//     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: friend binary * Scalar\n";
+//     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: friend binary * Scalar\n";
+//     return p * n;
+// }
 
 template <class T>
 Matrix<T> Matrix<T>::operator/(T p) const {
@@ -256,14 +256,6 @@ string Matrix<T>::to_string() const {
     //     for (typename vector<T>::size_type i = 0; i < n; ++i) m = max(m, to_string(at(i, j)).size())
     // }
 }
-
-// template <typename S>
-// istream& operator>>(istream& s,       Matrix<S>& x) {
-//     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: istream >>\n";
-//     for (typename vector<S>::size_type i = 0; i < x.row(); ++i) for (typename vector<S>::size_type j = 0; j < x.column(); ++j) s >> x.at(i, j);
-//     return s;
-//     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: istream >>\n";
-// }
 
 template class Matrix<short>;
 template class Matrix<unsigned short>;

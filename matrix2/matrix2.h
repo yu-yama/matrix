@@ -14,6 +14,9 @@ template <typename T>
 std::ostream& operator<<(std::ostream&, const Matrix<T>&);
 
 template <typename T>
+std::istream& operator>>(std::istream&,       Matrix<T>&);
+
+template <typename T>
 class Matrix {
     // typedef typename std::vector<T>::size_type size_type;
 private:
@@ -53,8 +56,8 @@ public:
     Matrix  operator-(Matrix p) const;
     Matrix  operator*(Matrix p) const;
     Matrix  operator*(T p) const;
-    template <typename S>
-    friend Matrix<S> operator*(S n, const Matrix<S>& p);
+    // template <typename S>
+    // friend Matrix<S> operator*(S n, const Matrix<S>& p);
     // Matrix  operator/(Matrix p) const;
     Matrix  operator/(T p) const;
     // template <typename S>
@@ -73,13 +76,7 @@ public:
     // std::string to_latex() const;
 
     friend std::ostream& operator<< <> (std::ostream&, const Matrix&);
-
-    // friend std::istream& operator>>(std::istream& s,       Matrix& x) {
-    //     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: std::istream >>\n";
-    //     for (typename std::vector<T>::size_type i = 0; i < x.row(); ++i) for (typename std::vector<T>::size_type j = 0; j < x.column(); ++j) s >> x.at(i, j);
-    //     return s;
-    //     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: std::istream >>\n";
-    // }
+    friend std::istream& operator>> <> (std::istream&,       Matrix&);
 };
 
 template <typename T>
@@ -87,6 +84,14 @@ std::ostream& operator<<(std::ostream& s, const Matrix<T>& x) {
     if (___MATRIXINTARRAY_DEBUG_) std::cout << "Start: ostream <<\n";
     if (___MATRIXINTARRAY_DEBUG_) std::cout << "End r: ostream <<\n";
     return s << x.to_string();
+}
+
+template <typename T>
+std::istream& operator>>(std::istream& s,       Matrix<T>& x) {
+    if (___MATRIXINTARRAY_DEBUG_) std::cout << "Start: istream >>\n";
+    for (typename std::vector<T>::size_type i = 0; i < x.row(); ++i) for (typename std::vector<T>::size_type j = 0; j < x.column(); ++j) s >> x.at(i, j);
+    if (___MATRIXINTARRAY_DEBUG_) std::cout << "End r: istream >>\n";
+    return s;
 }
 
 // template <typename T>
