@@ -118,6 +118,9 @@ public:
     AugmentedMatrix(const AugmentedMatrix& p);
 
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mml, typename std::vector<T>::size_type mmr);
+
+    Matrix<T> left() const;
+    Matrix<T> right() const;
 };
 
 #endif

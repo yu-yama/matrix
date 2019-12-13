@@ -389,3 +389,13 @@ void AugmentedMatrix<T>::resize(typename vector<T>::size_type nn, typename vecto
     ml = mml;
     mr = mmr;
 }
+
+template <class T>
+Matrix<T> AugmentedMatrix<T>::left() const {
+    return matl;
+}
+
+template <class T>
+Matrix<T> AugmentedMatrix<T>::right() const {
+    return matr;
+}
