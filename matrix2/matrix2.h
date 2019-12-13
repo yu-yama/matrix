@@ -104,9 +104,20 @@ Matrix<T> identity_matrix(typename std::vector<T>::size_type n, T val) {
     return t;
 }
 
-// template <typename T>
-// std::std::ostream& operator<<(std::std::ostream& s, const std::Matrix<T>& x);
-// template <typename T>
-// std::std::istream& operator>>(std::std::istream& s,       std::Matrix<T>& x);
+template <typename T>
+class AugmentedMatrix {
+private:
+    Matrix<T> matl, matr;
+    typename std::vector<T>::size_type n, ml, mr;
+
+public:
+    AugmentedMatrix(typename std::vector<T>::size_type n, typename std::vector<T>::size_type ml);
+    AugmentedMatrix(typename std::vector<T>::size_type n, typename std::vector<T>::size_type ml, typename std::vector<T>::size_type mr);
+    AugmentedMatrix(Matrix<T> mmatl);
+    AugmentedMatrix(Matrix<T> mmatl, Matrix<T> mmatr);
+    AugmentedMatrix(const AugmentedMatrix& p);
+
+    void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mml, typename std::vector<T>::size_type mmr);
+};
 
 #endif

@@ -338,3 +338,54 @@ template class Matrix<long long>;
 template class Matrix<float>;
 template class Matrix<double>;
 template class Matrix<long double>;
+
+template <class T>
+AugmentedMatrix<T>::AugmentedMatrix(typename vector<T>::size_type n, typename vector<T>::size_type ml) {
+    resize(n, ml, 1);
+}
+
+template <class T>
+AugmentedMatrix<T>::AugmentedMatrix(typename vector<T>::size_type n, typename vector<T>::size_type ml, typename vector<T>::size_type mr) {
+    resize(n, ml, mr);
+}
+
+template <class T>
+AugmentedMatrix<T>::AugmentedMatrix(Matrix<T> mmatl) {
+    matl = mmatl;
+    matr = Matrix<T>(mmatl.n);
+    n = mmatl.n;
+    ml = mmatl.m;
+    mr = 1;
+}
+
+template <class T>
+AugmentedMatrix<T>::AugmentedMatrix(Matrix<T> mmatl, Matrix<T> mmatr) {
+    if (mmatl.n != mmatr.n) {
+        ostringstream errMsg;
+        errMsg << "The number of rows does not match (" << mmatl.n << "x" << mmatl.m << ", " << mmatr.n << "x" << mmatr.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    matl = mmatl;
+    matr = mmatr;
+    n = mmatl.n;
+    ml = mmatl.m;
+    mr = mmatr.m;
+}
+
+template <class T>
+AugmentedMatrix<T>::AugmentedMatrix(const AugmentedMatrix& p) {
+    matl = p.matl;
+    matr = p.matr;
+    n = p.n;
+    ml = p.ml;
+    mr = p.mr;
+}
+
+template <class T>
+void AugmentedMatrix<T>::resize(typename vector<T>::size_type nn, typename vector<T>::size_type mml, typename vector<T>::size_type mmr) {
+    matl = Matrix<T>(nn, mml);
+    matr = Matrix<T>(nn, mmr);
+    n = nn;
+    ml = mml;
+    mr = mmr;
+}
