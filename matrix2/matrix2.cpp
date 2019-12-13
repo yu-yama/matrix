@@ -462,3 +462,45 @@ template <class T>
 bool AugmentedMatrix<T>::operator!=(const AugmentedMatrix& p) const {
     return !(*this == p);
 }
+
+template <class T>
+AugmentedMatrix<T> AugmentedMatrix<T>::gauss() const {
+    AugmentedMatrix<T> temp(*this);
+    typename vector<T>::size_type y = 0, x = 0;
+    while (y < n && x < ml) {
+        typename vector<T>::size_type mPos = 0;
+        T mVal = 0;
+        for (typename vector<T>::size_type i = y; i < n; ++i) if (mVal < abs(temp.at(i, x))) mPos = i, mVal = abs(temp.at(i, x));
+        if (!mVal) ++x;
+        else {
+            for (typename vector<T>::size_type j = 0; j < ml + mr; ++j) swap(temp.at(y, j), temp.at(mPos, j));
+            for (typename vector<T>::size_type i = y + 1; i < n; ++i) {
+                T f = temp.at(i, x) / temp.at(y, x);
+                temp.at(i, x) = 0;
+                for (typename vector<T>::size_type j = x + 1; j < ml + mr; ++j) temp.at(i, j) -= temp.at(y, j) * f;
+            }
+            ++y, ++x;
+        }
+    }
+    return temp;
+}
+
+template <class T>
+AugmentedMatrix<T> AugmentedMatrix<T>::gauss_jordan() const {
+    AugmentedMatrix<T> temp = gauss();
+    vector<typename vector<T>::size_type> lPos;
+    lPos.reserve(ml);
+    typename vector<T>::size_type y = 0;
+    for (typename vector<T>::size_type j = 0; y < n && j < ml; ++j) if (temp.at(y, j)) lPos.push_back(j), ++y;
+    --y;
+    for (; y >= 0 && y < n; --y) {
+        typename vector<T>::size_type x = lPos.at(y);
+        for (typename vector<T>::size_type j = x + 1; j < ml + mr; ++j) temp.at(y, j) /= temp.at(y, x);
+        temp.at(y, x) = 1;
+        for (typename vector<T>::size_type i = 0; i < y; ++i) {
+            for (typename vector<T>::size_type j = x + 1; j < ml + mr; ++j) temp.at(i, j) -= temp.at(y, j) * temp.at(i, x);
+            temp.at(i, x) = 0;
+        }
+    }
+    return temp;
+}

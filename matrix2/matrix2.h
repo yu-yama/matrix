@@ -134,6 +134,9 @@ public:
 
     bool operator==(const AugmentedMatrix& p) const;
     bool operator!=(const AugmentedMatrix& p) const;
+
+    AugmentedMatrix gauss() const;
+    AugmentedMatrix gauss_jordan() const;
 };
 
 #endif
