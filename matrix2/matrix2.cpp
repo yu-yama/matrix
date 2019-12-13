@@ -352,24 +352,24 @@ AugmentedMatrix<T>::AugmentedMatrix(typename vector<T>::size_type n, typename ve
 template <class T>
 AugmentedMatrix<T>::AugmentedMatrix(Matrix<T> mmatl) {
     matl = mmatl;
-    matr = Matrix<T>(mmatl.n);
-    n = mmatl.n;
-    ml = mmatl.m;
+    matr = Matrix<T>(mmatl.row());
+    n = mmatl.row();
+    ml = mmatl.column();
     mr = 1;
 }
 
 template <class T>
 AugmentedMatrix<T>::AugmentedMatrix(Matrix<T> mmatl, Matrix<T> mmatr) {
-    if (mmatl.n != mmatr.n) {
+    if (mmatl.row() != mmatr.row()) {
         ostringstream errMsg;
-        errMsg << "The number of rows does not match (" << mmatl.n << "x" << mmatl.m << ", " << mmatr.n << "x" << mmatr.m << ")\n";
+        errMsg << "The number of rows does not match (" << mmatl.row() << "x" << mmatl.column() << ", " << mmatr.row() << "x" << mmatr.column() << ")\n";
         throw invalid_argument(errMsg.str());
     }
     matl = mmatl;
     matr = mmatr;
-    n = mmatl.n;
-    ml = mmatl.m;
-    mr = mmatr.m;
+    n = mmatl.row();
+    ml = mmatl.column();
+    mr = mmatr.column();
 }
 
 template <class T>
