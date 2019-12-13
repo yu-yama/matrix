@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <map>
 
 template <typename T>
 class Matrix;
@@ -22,6 +23,8 @@ class Matrix {
 private:
     std::vector<T> mat;
     typename std::vector<T>::size_type n, m;
+
+    std::pair<Matrix, bool> gauss_count() const;
 
 public:
     Matrix();

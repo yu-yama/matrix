@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <map>
 #include "matrix2.h"
 
 using namespace std;
@@ -234,8 +235,9 @@ bool Matrix<T>::operator!=(const Matrix<T>& p) const {
 }
 
 template <class T>
-Matrix<T> Matrix<T>::gauss() const {
+pair<Matrix<T>, bool> Matrix<T>::gauss_count() const {
     Matrix<T> temp(*this);
+    bool neg = false;
     typename vector<T>::size_type y = 0, x = 0;
     while (y < n && x < m) {
         typename vector<T>::size_type mPos = 0;
@@ -243,7 +245,7 @@ Matrix<T> Matrix<T>::gauss() const {
         for (typename vector<T>::size_type i = y; i < n; ++i) if (mVal < abs(temp.at(i, x))) mPos = i, mVal = abs(temp.at(i, x));
         if (!mVal) ++x;
         else {
-            for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j));
+            for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j)), neg = !neg;
             for (typename vector<T>::size_type i = y + 1; i < n; ++i) {
                 T f = temp.at(i, x) / temp.at(y, x);
                 temp.at(i, x) = 0;
@@ -252,7 +254,12 @@ Matrix<T> Matrix<T>::gauss() const {
             ++y, ++x;
         }
     }
-    return temp;
+    return make_pair(temp, neg);
+}
+
+template <class T>
+Matrix<T> Matrix<T>::gauss() const {
+    return gauss_count().first;
 }
 
 
@@ -283,25 +290,9 @@ T Matrix<T>::det() const {
         errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    Matrix<T> temp(*this);
-    typename vector<T>::size_type y = 0, x = 0;
-    T ans = 1;
-    while (y < n && x < m) {
-        typename vector<T>::size_type mPos = 0;
-        T mVal = 0;
-        for (typename vector<T>::size_type i = y; i < n; ++i) if (mVal < abs(temp.at(i, x))) mPos = i, mVal = abs(temp.at(i, x));
-        if (!mVal) ++x;
-        else {
-            for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j)), ans *= -1;
-            for (typename vector<T>::size_type i = y + 1; i < n; ++i) {
-                T f = temp.at(i, x) / temp.at(y, x);
-                temp.at(i, x) = 0;
-                for (typename vector<T>::size_type j = x + 1; j < m; ++j) temp.at(i, j) -= temp.at(y, j) * f;
-            }
-            ++y, ++x;
-        }
-    }
-    for (typename vector<T>::size_type i = 0; i < n; ++i) ans *= temp.at(i, i);
+    pair<Matrix<T>, bool> temp = gauss_count();
+    T ans = (temp.second ? -1 : 1);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) ans *= temp.first.at(i, i);
     return ans;
 }
 
