@@ -52,7 +52,7 @@ public:
     Matrix& operator-=(Matrix p);
     Matrix& operator*=(Matrix p);
     Matrix& operator*=(T p);
-    // Matrix& operator/=(Matrix p);
+    Matrix& operator/=(Matrix p);
     Matrix& operator/=(T p);
 
     Matrix  operator+(Matrix p) const;
@@ -61,7 +61,7 @@ public:
     Matrix  operator*(T p) const;
     // template <typename S>
     // friend Matrix<S> operator*(S n, const Matrix<S>& p);
-    // Matrix  operator/(Matrix p) const;
+    Matrix  operator/(Matrix p) const;
     Matrix  operator/(T p) const;
     // template <typename S>
     // friend Matrix<S> operator/(S n, const Matrix<S>& p);
@@ -74,7 +74,7 @@ public:
     T det() const;
     Matrix inv() const;
     Matrix pow(int r) const;
-    //
+
     std::string to_string() const;
     // std::string to_latex() const;
 

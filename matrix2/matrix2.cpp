@@ -154,6 +154,14 @@ Matrix<T>& Matrix<T>::operator*=(T p) {
 }
 
 template <class T>
+Matrix<T>& Matrix<T>::operator/=(Matrix<T> p) {
+    if (___MATRIXINTARRAY_DEBUG_) cout << "Start: assign /= Matrix\n";
+    *this = *this / p;
+    if (___MATRIXINTARRAY_DEBUG_) cout << "End r: assign /= Matrix\n";
+    return *this;
+}
+
+template <class T>
 Matrix<T>& Matrix<T>::operator/=(T p) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: assign /= Scalar\n";
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) (*this).at(i, j) /= p;
@@ -208,6 +216,11 @@ Matrix<T> Matrix<T>::operator*(T p) const {
 //     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: friend binary * Scalar\n";
 //     return p * n;
 // }
+
+template <class T>
+Matrix<T> Matrix<T>::operator/(Matrix<T> p) const {
+    return (*this) * p.inv();
+}
 
 template <class T>
 Matrix<T> Matrix<T>::operator/(T p) const {
@@ -334,9 +347,8 @@ Matrix<T> Matrix<T>::pow(int r) const {
         errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    // if (r < 0) return inv().pow(-r);
-    // else if (!r) return identity_matrix(n, (T)1);
-    if (!r) return identity_matrix(n, (T)1);
+    if (r < 0) return inv().pow(-r);
+    else if (!r) return identity_matrix(n, (T)1);
     else if (r % 2) return pow(r - 1) * (*this);
     else {
         Matrix<T> t = pow(r / 2);
