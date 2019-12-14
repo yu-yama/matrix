@@ -298,8 +298,19 @@ T Matrix<T>::det() const {
 
 template <class T>
 Matrix<T> Matrix<T>::inv() const {
-    AugmentedMatrix<T> temp((*this), identity_matrix(n, (T)1));
-    return temp.gauss_jordan().right();
+    if (n != m) {
+        ostringstream errMsg;
+        errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    AugmentedMatrix<T> temp1((*this), identity_matrix(n, (T)1));
+    AugmentedMatrix<T> temp2 = temp1.gauss_jordan();
+    if (temp2.left() != identity_matrix(n, (T)1)) {
+        ostringstream errMsg;
+        errMsg << "Argument is not invertible\n";
+        throw invalid_argument(errMsg.str());
+    }
+    return temp2.right();
 }
 
 template <class T>
