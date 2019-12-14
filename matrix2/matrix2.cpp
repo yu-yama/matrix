@@ -327,20 +327,6 @@ Matrix<T> Matrix<T>::inv() const {
 }
 
 template <class T>
-string Matrix<T>::to_string() const {
-    if (___MATRIXINTARRAY_DEBUG_) cout << "Start: to_string\n";
-    ostringstream s;
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) s << at(i, j) << (j == m - 1 ? "\n" : ", ");
-    if (___MATRIXINTARRAY_DEBUG_) cout << "End r: to_string\n";
-    return s.str();
-    // Count the number of digits of each component in a column, and forms matrix using ascii art
-    // for (typename vector<T>::size_type j = 0; j < m; ++j) {
-    //     string::size_type m = 0;
-    //     for (typename vector<T>::size_type i = 0; i < n; ++i) m = max(m, to_string(at(i, j)).size())
-    // }
-}
-
-template <class T>
 Matrix<T> Matrix<T>::pow(int r) const {
     if (n != m) {
         ostringstream errMsg;
@@ -354,6 +340,20 @@ Matrix<T> Matrix<T>::pow(int r) const {
         Matrix<T> t = pow(r / 2);
         return t * t;
     }
+}
+
+template <class T>
+string Matrix<T>::to_string() const {
+    if (___MATRIXINTARRAY_DEBUG_) cout << "Start: to_string\n";
+    ostringstream s;
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) s << at(i, j) << (j == m - 1 ? "\n" : ", ");
+    if (___MATRIXINTARRAY_DEBUG_) cout << "End r: to_string\n";
+    return s.str();
+    // Count the number of digits of each component in a column, and forms matrix using ascii art
+    // for (typename vector<T>::size_type j = 0; j < m; ++j) {
+    //     string::size_type m = 0;
+    //     for (typename vector<T>::size_type i = 0; i < n; ++i) m = max(m, to_string(at(i, j)).size())
+    // }
 }
 
 template class Matrix<short>;
