@@ -76,12 +76,14 @@ public:
     Matrix pow(int r) const;
     T trace() const;
 
+    T norm_squared() const;
     double norm() const;
     double distance(Matrix p) const;
     double angle(Matrix p) const;
 
     T dot(Matrix p) const;
     bool orthogonal(Matrix p) const;
+    Matrix projection(Matrix p) const;
     Matrix cross(Matrix p) const;
 
     T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;

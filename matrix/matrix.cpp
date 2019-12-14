@@ -356,16 +356,21 @@ T Matrix<T>::trace() const {
 }
 
 template <class T>
-double Matrix<T>::norm() const {
+T Matrix<T>::norm_squared() const {
     if (n != 1 && m != 1) {
         ostringstream errMsg;
         errMsg << "Arguments are neither row nor column vector (" << n << "x" << m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    if (m != 1) return transpose().norm();
+    if (m != 1) return transpose().norm_squared();
     T ans = 0;
     for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, 0) * at(i, 0);
-    return sqrt((double)ans);
+    return ans;
+}
+
+template <class T>
+double Matrix<T>::norm() const {
+    return sqrt((double)norm_squared());
 }
 
 template <class T>
@@ -398,6 +403,11 @@ T Matrix<T>::dot(Matrix<T> p) const {
 template <class T>
 bool Matrix<T>::orthogonal(Matrix<T> p) const {
     return (dot(p) == 0);
+}
+
+template <class T>
+Matrix<T> Matrix<T>::projection(Matrix<T> p) const {
+    return p * (dot(p) / p.norm_squared());
 }
 
 template <class T>
