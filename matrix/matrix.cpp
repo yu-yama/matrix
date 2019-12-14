@@ -355,6 +355,23 @@ T Matrix<T>::trace() const {
 }
 
 template <class T>
+T Matrix<T>::dot(Matrix<T> p) const {
+    if (n != p.n || m != p.m) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    } else if (n != 1 && m != 1) {
+        ostringstream errMsg;
+        errMsg << "Arguments are neither row nor column vector (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    if (n != 1) return transpose().dot(p.transpose());
+    T ans = 0;
+    for (typename vector<T>::size_type j = 0; j < m; ++j) ans += at(0, j) * p.at(0, j);
+    return ans;
+}
+
+template <class T>
 Matrix<T> Matrix<T>::transpose() const {
     Matrix<T> temp(m, n);
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(j, i) = at(i, j);

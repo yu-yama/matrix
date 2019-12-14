@@ -76,6 +76,8 @@ public:
     Matrix pow(int r) const;
     T trace() const;
 
+    T dot(Matrix p) const;
+
     Matrix transpose() const;
 
     std::string to_string() const;
