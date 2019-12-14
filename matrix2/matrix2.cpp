@@ -66,14 +66,14 @@ template <class T>
 T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size_type c) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: int& at(int, int): " << r << ", " << c << '\n';
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: int& at(int, int): " << r << ", " << c << '\n';
-    return mat.at(r * n + c);
+    return mat.at(r * m + c);
 }
 
 template <class T>
 const T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size_type c) const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: const int& at(int, int): " << r << ", " << c << '\n';
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: const int& at(int, int): " << r << ", " << c << '\n';
-    return mat.at(r * n + c);
+    return mat.at(r * m + c);
 }
 
 template <class T>

@@ -49,12 +49,10 @@ int main() {
     cout << "000350\n" << h << h.det() << endl;
 
     Matrix<double> aa1({{1, 3, -2, 0, 2, 0}, {2, 6, -5, -2, 4, -3}, {0, 0, 5, 10, 0, 15}, {2, 6, 0, 8, 4, 18}});
-    cout << aa1.row() << endl << aa1.column() << endl;
-    Matrix<double> aa2({{0, 0}, {-1, 0}, {5, 0}, {6, 0}});
-    cout << aa2.row() << endl << aa2.column() << endl;
-    // AugmentedMatrix<double> aa(aa1, aa2);
-    // cout << "000370\n" << aa.left() << aa.right();
-    // cout << "000390\n" << aa.gauss().left() << aa.gauss().right();
-    // cout << "000410\n" << aa.gauss_jordan().left() << aa.gauss_jordan().right();
+    Matrix<double> aa2({{0}, {-1}, {5}, {6}});
+    AugmentedMatrix<double> aa(aa1, aa2);
+    cout << "000370\n" << aa.left() << aa.right();
+    cout << "000390\n" << aa.gauss().left() << aa.gauss().right();
+    cout << "000410\n" << aa.gauss_jordan().left() << aa.gauss_jordan().right();
     return 0;
 }
