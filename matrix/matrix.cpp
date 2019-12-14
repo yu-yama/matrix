@@ -356,6 +356,11 @@ T Matrix<T>::trace() const {
 }
 
 template <class T>
+T Matrix<T>::rank() const {
+    return get<2>(gauss_count());
+}
+
+template <class T>
 T Matrix<T>::norm_squared() const {
     if (n != 1 && m != 1) {
         ostringstream errMsg;
