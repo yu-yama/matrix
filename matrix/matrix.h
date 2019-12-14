@@ -81,6 +81,7 @@ public:
     double angle(Matrix p) const;
 
     T dot(Matrix p) const;
+    bool orthogonal(Matrix p) const;
     Matrix cross(Matrix p) const;
 
     T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;

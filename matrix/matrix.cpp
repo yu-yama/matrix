@@ -396,6 +396,11 @@ T Matrix<T>::dot(Matrix<T> p) const {
 }
 
 template <class T>
+bool Matrix<T>::orthogonal(Matrix<T> p) const {
+    return (dot(p) == 0);
+}
+
+template <class T>
 Matrix<T> Matrix<T>::cross(Matrix<T> p) const {
     if (n != p.n || m != p.m) {
         ostringstream errMsg;
