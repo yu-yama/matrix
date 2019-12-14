@@ -297,6 +297,12 @@ T Matrix<T>::det() const {
 }
 
 template <class T>
+Matrix<T> Matrix<T>::inv() const {
+    AugmentedMatrix<T> temp((*this), identity_matrix(n, (T)1));
+    return temp.gauss_jordan().right();
+}
+
+template <class T>
 string Matrix<T>::to_string() const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: to_string\n";
     ostringstream s;

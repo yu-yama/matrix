@@ -55,5 +55,11 @@ int main() {
     cout << "000370\n" << aa.left() << aa.right();
     cout << "000390\n" << aa.gauss().left() << aa.gauss().right();
     cout << "000410\n" << aa.gauss_jordan().left() << aa.gauss_jordan().right();
+
+    Matrix<double> ab1({{1, 0, 1}, {1, 1, 0}, {0, 1, 1}});
+    Matrix<double> ab2({{1, 0, 0}, {0, 1, 0}, {0, 0, 1}});
+    AugmentedMatrix<double> ab(ab1, ab2);
+    cout << "000430\n" << ab.gauss_jordan().left() << ab.gauss_jordan().right();
+    cout << "000450\n" << ab1.inv();
     return 0;
 }

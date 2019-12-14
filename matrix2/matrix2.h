@@ -72,7 +72,7 @@ public:
     Matrix gauss() const;
     Matrix gauss_jordan() const;
     T det() const;
-    // Matrix inv() const;
+    Matrix inv() const;
     Matrix pow(int r) const;
     //
     std::string to_string() const;
