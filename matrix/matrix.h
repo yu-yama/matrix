@@ -79,6 +79,9 @@ public:
     T dot(Matrix p) const;
     Matrix cross(Matrix p) const;
 
+    T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
+    T cofactor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
+
     Matrix transpose() const;
 
     std::string to_string() const;

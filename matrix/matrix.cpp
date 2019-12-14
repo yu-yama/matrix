@@ -258,7 +258,7 @@ pair<Matrix<T>, bool> Matrix<T>::gauss_count() const {
         for (typename vector<T>::size_type i = y; i < n; ++i) if (mVal < abs(temp.at(i, x))) mPos = i, mVal = abs(temp.at(i, x));
         if (!mVal) ++x;
         else {
-            for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j)), neg = !neg;
+            if (y != mPos) for (typename vector<T>::size_type j = 0; j < m; ++j) swap(temp.at(y, j), temp.at(mPos, j)), neg = !neg;
             for (typename vector<T>::size_type i = y + 1; i < n; ++i) {
                 T f = temp.at(i, x) / temp.at(y, x);
                 temp.at(i, x) = 0;
@@ -387,6 +387,24 @@ Matrix<T> Matrix<T>::cross(Matrix<T> p) const {
     ostringstream errMsg;
     errMsg << "Arguments are neither 3x1 nor 1x3 vector (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
     throw invalid_argument(errMsg.str());
+}
+
+template <class T>
+T Matrix<T>::minor(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+    if (n != m) {
+        ostringstream errMsg;
+        errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    Matrix<T> temp(n - 1, m - 1);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) {
+        if (y == i) continue;
+        for (typename vector<T>::size_type j = 0; j < m; ++j) {
+            if (x == j) continue;
+            temp.at(i - (i > y), j - (j > x)) = at(i, j);
+        }
+    }
+    return temp.det();
 }
 
 template <class T>

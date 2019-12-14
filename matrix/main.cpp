@@ -45,8 +45,14 @@ int main() {
     cout << "000310\n" << f << f.gauss() << f.gauss_jordan();
     Matrix<double> g({{3, 5}, {-2, 4}});
     cout << "000330\n" << g << g.det() << endl;
+    Matrix<double> o({vector<double>({1})});
+    cout << "000333\n" << o << o.det() << endl;
+    Matrix<double> n(0, 0);
+    cout << "000337\n" << n << n.det() << endl;
     Matrix<double> h({{-2, 1, 4}, {3, 5, -7}, {1, 6, 2}});
     cout << "000350\n" << h << h.det() << endl;
+    Matrix<double> h2({{3, 5, -7}, {1, 6, 2}, {-2, 1, 4}});
+    cout << "000355\n" << h2 << h2.det() << endl;
 
     Matrix<double> aa1({{1, 3, -2, 0, 2, 0}, {2, 6, -5, -2, 4, -3}, {0, 0, 5, 10, 0, 15}, {2, 6, 0, 8, 4, 18}});
     cout << "000360\n" << aa1.gauss() << aa1.gauss_jordan();
@@ -75,6 +81,17 @@ int main() {
     cout << "000570\n" << ad2.dot(ad1) << endl;
     cout << "000590\n" << ad1.cross(ad2);
     cout << "000610\n" << ad2.cross(ad1);
+
+    Matrix<double> ae1({{1, 2, 3}, {2, 5, 3}, {1, 0, 8}});
+    Matrix<double> ae2({{1, 2}, {1, 0}});
+    cout << "000630\n" << ae1.minor(1, 2) << endl;
+    cout << "000650\n" << ae2.det() << endl;
+
+    Matrix<double> af1(1, 1);
+    af1.at(0, 0) = 1;
+    Matrix<double> af2(0, 0);
+    cout << "000670\n" << af1.minor(0, 0) << endl;
+    cout << "000690\n" << af2.det() << endl;
 
     // terminate called after throwing an instance of 'std::invalid_argument'
     // what():  Argument is not invertible
