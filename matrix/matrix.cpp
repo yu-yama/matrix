@@ -408,6 +408,11 @@ T Matrix<T>::minor(typename vector<T>::size_type y, typename vector<T>::size_typ
 }
 
 template <class T>
+T Matrix<T>::cofactor(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+    return minor(y, x) * ((y + x) % 2 ? -1 : 1);
+}
+
+template <class T>
 Matrix<T> Matrix<T>::transpose() const {
     Matrix<T> temp(m, n);
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(j, i) = at(i, j);
