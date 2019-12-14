@@ -62,6 +62,20 @@ int main() {
     cout << "000430\n" << ab.gauss_jordan().left() << ab.gauss_jordan().right();
     cout << "000450\n" << ab1.inv();
 
+    Matrix<double> ac1({{1, 2, 3}});
+    Matrix<double> ac2({{2, 5, 3}});
+    cout << "000470\n" << ac1.dot(ac2) << endl;
+    cout << "000490\n" << ac2.dot(ac1) << endl;
+    cout << "000510\n" << ac1.cross(ac2);
+    cout << "000530\n" << ac2.cross(ac1);
+
+    Matrix<double> ad1({{1}, {2}, {3}});
+    Matrix<double> ad2({{2}, {5}, {3}});
+    cout << "000550\n" << ad1.dot(ad2) << endl;
+    cout << "000570\n" << ad2.dot(ad1) << endl;
+    cout << "000590\n" << ad1.cross(ad2);
+    cout << "000610\n" << ad2.cross(ad1);
+
     // terminate called after throwing an instance of 'std::invalid_argument'
     // what():  Argument is not invertible
     // Matrix<double> ac1({{1, 6, 4}, {2, 4, -1}, {-1, 2, 5}});
