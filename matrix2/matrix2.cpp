@@ -343,6 +343,13 @@ Matrix<T> Matrix<T>::pow(int r) const {
 }
 
 template <class T>
+Matrix<T> Matrix<T>::transpose() const {
+    Matrix<T> temp(m, n);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(j, i) = at(i, j);
+    return temp;
+}
+
+template <class T>
 string Matrix<T>::to_string() const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: to_string\n";
     ostringstream s;

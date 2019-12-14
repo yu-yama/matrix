@@ -75,6 +75,8 @@ public:
     Matrix inv() const;
     Matrix pow(int r) const;
 
+    Matrix transpose() const;
+
     std::string to_string() const;
     // std::string to_latex() const;
 
