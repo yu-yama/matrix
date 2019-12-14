@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <tuple>
 
 template <typename T>
 class Matrix;
@@ -24,7 +25,7 @@ private:
     std::vector<T> mat;
     typename std::vector<T>::size_type n, m;
 
-    std::pair<Matrix, bool> gauss_count() const;
+    std::tuple<Matrix, bool, typename std::vector<T>::size_type> gauss_count() const;
 
 public:
     Matrix();
@@ -75,6 +76,7 @@ public:
     Matrix inv() const;
     Matrix pow(int r) const;
     T trace() const;
+    T rank() const;
 
     T norm_squared() const;
     double norm() const;

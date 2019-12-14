@@ -249,7 +249,7 @@ bool Matrix<T>::operator!=(const Matrix<T>& p) const {
 }
 
 template <class T>
-pair<Matrix<T>, bool> Matrix<T>::gauss_count() const {
+tuple<Matrix<T>, bool, typename vector<T>::size_type> Matrix<T>::gauss_count() const {
     Matrix<T> temp(*this);
     bool neg = false;
     typename vector<T>::size_type y = 0, x = 0;
@@ -268,12 +268,12 @@ pair<Matrix<T>, bool> Matrix<T>::gauss_count() const {
             ++y, ++x;
         }
     }
-    return make_pair(temp, neg);
+    return make_tuple(temp, neg, y);
 }
 
 template <class T>
 Matrix<T> Matrix<T>::gauss() const {
-    return gauss_count().first;
+    return get<0>(gauss_count());
 }
 
 
@@ -304,9 +304,9 @@ T Matrix<T>::det() const {
         errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    pair<Matrix<T>, bool> temp = gauss_count();
-    T ans = (temp.second ? -1 : 1);
-    for (typename vector<T>::size_type i = 0; i < n; ++i) ans *= temp.first.at(i, i);
+    tuple<Matrix<T>, bool, typename vector<T>::size_type> temp = gauss_count();
+    T ans = (get<1>(temp) ? -1 : 1);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) ans *= get<0>(temp).at(i, i);
     return ans;
 }
 
