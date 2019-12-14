@@ -93,6 +93,9 @@ int main() {
     cout << "000670\n" << af1.minor(0, 0) << endl << af1.cofactor(0, 0) << endl;
     cout << "000690\n" << af2.det() << endl;
 
+    Matrix<double> ag({{1, 2, 3}, {2, 5, 3}, {1, 0, 8}});
+    cout << "000710\n" << ag.cofactor_matrix() << ag.adjugate();
+
     // terminate called after throwing an instance of 'std::invalid_argument'
     // what():  Argument is not invertible
     // Matrix<double> ac1({{1, 6, 4}, {2, 4, -1}, {-1, 2, 5}});

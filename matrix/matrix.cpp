@@ -413,6 +413,18 @@ T Matrix<T>::cofactor(typename vector<T>::size_type y, typename vector<T>::size_
 }
 
 template <class T>
+Matrix<T> Matrix<T>::cofactor_matrix() const {
+    Matrix<T> temp(n, m);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(i, j) = cofactor(i, j);
+    return temp;
+}
+
+template <class T>
+Matrix<T> Matrix<T>::adjugate() const {
+    return cofactor_matrix().transpose();
+}
+
+template <class T>
 Matrix<T> Matrix<T>::transpose() const {
     Matrix<T> temp(m, n);
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(j, i) = at(i, j);

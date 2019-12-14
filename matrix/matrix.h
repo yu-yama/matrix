@@ -81,6 +81,8 @@ public:
 
     T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
     T cofactor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
+    Matrix<T> cofactor_matrix() const;
+    Matrix<T> adjugate() const;
 
     Matrix transpose() const;
 
