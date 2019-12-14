@@ -343,6 +343,18 @@ Matrix<T> Matrix<T>::pow(int r) const {
 }
 
 template <class T>
+T Matrix<T>::trace() const {
+    if (n != m) {
+        ostringstream errMsg;
+        errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    T ans = 0;
+    for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, i);
+    return ans;
+}
+
+template <class T>
 Matrix<T> Matrix<T>::transpose() const {
     Matrix<T> temp(m, n);
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(j, i) = at(i, j);

@@ -74,6 +74,7 @@ public:
     T det() const;
     Matrix inv() const;
     Matrix pow(int r) const;
+    T trace() const;
 
     Matrix transpose() const;
 
