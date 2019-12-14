@@ -120,7 +120,7 @@ std::istream& operator>>(std::istream& s,       Matrix<T>& x) {
 template <typename T>
 Matrix<T> identity_matrix(typename std::vector<T>::size_type n, T val) {
     Matrix<T> t(n, n);
-    for (typename std::vector<T>::size_type i = 0; i < n; ++i) t.at(i, i) = val;
+    for (typename std::vector<T>::size_type i = 0; i < n; ++i) t.at(i, i) = (T)1;
     return t;
 }
 
