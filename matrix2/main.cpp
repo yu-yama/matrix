@@ -62,7 +62,6 @@ int main() {
     cout << "000430\n" << ab.gauss_jordan().left() << ab.gauss_jordan().right();
     cout << "000450\n" << ab1.inv();
 
-
     // terminate called after throwing an instance of 'std::invalid_argument'
     // what():  Argument is not invertible
     // Matrix<double> ac1({{1, 6, 4}, {2, 4, -1}, {-1, 2, 5}});
