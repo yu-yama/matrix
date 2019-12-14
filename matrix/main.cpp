@@ -70,6 +70,9 @@ int main() {
 
     Matrix<double> ac1({{1, 2, 3}});
     Matrix<double> ac2({{2, 5, 3}});
+    cout << "000455\n" << ac1.norm() << endl;
+    cout << "000460\n" << ac2.norm() << endl;
+    cout << "000465\n" << ac1.distance(ac2) << endl;
     cout << "000470\n" << ac1.dot(ac2) << endl;
     cout << "000490\n" << ac2.dot(ac1) << endl;
     cout << "000510\n" << ac1.cross(ac2);
@@ -77,6 +80,9 @@ int main() {
 
     Matrix<double> ad1({{1}, {2}, {3}});
     Matrix<double> ad2({{2}, {5}, {3}});
+    cout << "000535\n" << ac1.norm() << endl;
+    cout << "000540\n" << ac2.norm() << endl;
+    cout << "000545\n" << ac1.distance(ac2) << endl;
     cout << "000550\n" << ad1.dot(ad2) << endl;
     cout << "000570\n" << ad2.dot(ad1) << endl;
     cout << "000590\n" << ad1.cross(ad2);

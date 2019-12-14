@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <map>
+#include <cmath>
 #include "matrix.h"
 
 using namespace std;
@@ -352,6 +353,24 @@ T Matrix<T>::trace() const {
     T ans = 0;
     for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, i);
     return ans;
+}
+
+template <class T>
+double Matrix<T>::norm() const {
+    if (n != 1 && m != 1) {
+        ostringstream errMsg;
+        errMsg << "Arguments are neither row nor column vector (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    if (m != 1) return transpose().norm();
+    T ans = 0;
+    for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, 0) * at(i, 0);
+    return sqrt((double)ans);
+}
+
+template <class T>
+double Matrix<T>::distance(Matrix<T> p) const {
+    return (*this - p).norm();
 }
 
 template <class T>

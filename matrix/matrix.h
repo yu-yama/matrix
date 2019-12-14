@@ -76,6 +76,9 @@ public:
     Matrix pow(int r) const;
     T trace() const;
 
+    double norm() const;
+    double distance(Matrix p) const;
+
     T dot(Matrix p) const;
     Matrix cross(Matrix p) const;
 
