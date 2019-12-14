@@ -374,6 +374,11 @@ double Matrix<T>::distance(Matrix<T> p) const {
 }
 
 template <class T>
+double Matrix<T>::angle(Matrix<T> p) const {
+    return acos((double)dot(p) / norm() / p.norm());
+}
+
+template <class T>
 T Matrix<T>::dot(Matrix<T> p) const {
     if (n != p.n || m != p.m) {
         ostringstream errMsg;

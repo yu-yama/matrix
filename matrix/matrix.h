@@ -78,6 +78,7 @@ public:
 
     double norm() const;
     double distance(Matrix p) const;
+    double angle(Matrix p) const;
 
     T dot(Matrix p) const;
     Matrix cross(Matrix p) const;
