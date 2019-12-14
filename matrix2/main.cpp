@@ -49,6 +49,7 @@ int main() {
     cout << "000350\n" << h << h.det() << endl;
 
     Matrix<double> aa1({{1, 3, -2, 0, 2, 0}, {2, 6, -5, -2, 4, -3}, {0, 0, 5, 10, 0, 15}, {2, 6, 0, 8, 4, 18}});
+    cout << "000360\n" << aa1.gauss() << aa1.gauss_jordan();
     Matrix<double> aa2({{0}, {-1}, {5}, {6}});
     AugmentedMatrix<double> aa(aa1, aa2);
     cout << "000370\n" << aa.left() << aa.right();
