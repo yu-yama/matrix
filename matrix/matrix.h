@@ -77,6 +77,7 @@ public:
     T trace() const;
 
     T dot(Matrix p) const;
+    Matrix cross(Matrix p) const;
 
     Matrix transpose() const;
 

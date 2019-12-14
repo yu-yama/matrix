@@ -365,10 +365,28 @@ T Matrix<T>::dot(Matrix<T> p) const {
         errMsg << "Arguments are neither row nor column vector (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    if (n != 1) return transpose().dot(p.transpose());
+    if (m != 1) return transpose().dot(p.transpose());
     T ans = 0;
-    for (typename vector<T>::size_type j = 0; j < m; ++j) ans += at(0, j) * p.at(0, j);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, 0) * p.at(i, 0);
     return ans;
+}
+
+template <class T>
+Matrix<T> Matrix<T>::cross(Matrix<T> p) const {
+    if (n != p.n || m != p.m) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    if (n == 1 && m == 3) return transpose().cross(p.transpose());
+    if (n == 3 && m == 1) {
+        Matrix<T> ans(3);
+        for (typename vector<T>::size_type i = 0; i < 3; ++i) ans.at(i, 0) = at((i + 1) % 3, 0) * p.at((i + 2) % 3, 0) - at((i + 2) % 3, 0) * p.at((i + 1) % 3, 0);
+        return ans;
+    }
+    ostringstream errMsg;
+    errMsg << "Arguments are neither 3x1 nor 1x3 vector (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
+    throw invalid_argument(errMsg.str());
 }
 
 template <class T>
