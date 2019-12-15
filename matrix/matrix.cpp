@@ -346,9 +346,24 @@ bool Matrix<T>::operator!=(const Matrix<T>& p) const {
 }
 
 template <class T>
+bool Matrix<T>::empty() const {
+    return mat.empty();
+}
+
+template <class T>
 bool Matrix<T>::is_zero() const {
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) if (at(i, j)) return false;
     return true;
+}
+
+template <class T>
+bool Matrix<T>::is_identity() const {
+    if (n != m) {
+        ostringstream errMsg;
+        errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    return (*this == identity_matrix(n, (T)1));
 }
 
 template <class T>
