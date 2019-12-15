@@ -54,6 +54,16 @@ public:
     void remove_rows(typename std::vector<T>::size_type p);
     void remove_columns(typename std::vector<T>::size_type p);
 
+    // void insert_row(typename std::vector<T>::size_type p, std::vector<T> q);
+    // void delete_row(typename std::vector<T>::size_type p);
+    // void insert_column(typename std::vector<T>::size_type p, std::vector<T> q);
+    // void delete_column(typename std::vector<T>::size_type p);
+    //
+    // void insert_rows(typename std::vector<T>::size_type p, Matrix q);
+    // void delete_rows(typename std::vector<T>::size_type p, typename std::vector<T>::size_type q);
+    // void insert_columns(typename std::vector<T>::size_type p, Matrix q);
+    // void delete_columns(typename std::vector<T>::size_type p, typename std::vector<T>::size_type q);
+
     void resize(typename std::vector<T>::size_type nn);
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm);
     Matrix  operator+() const;

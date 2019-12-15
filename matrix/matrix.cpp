@@ -167,6 +167,11 @@ void Matrix<T>::remove_columns(typename vector<T>::size_type p) {
     resize(n, m - p);
 }
 
+// template <class T>
+// void Matrix<T>::insert_row(typename vector<T>::size_type p, vector<T> q) {
+//     ;
+// }
+
 template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn) {
     resize(nn, m);
