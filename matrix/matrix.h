@@ -27,6 +27,7 @@ private:
 
     std::tuple<Matrix, bool, typename std::vector<T>::size_type> gauss_count() const;
     Matrix basis() const;
+    void resize_skip(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm, typename std::vector<T>::size_type skipy, typename std::vector<T>::size_type skipx);
 
 public:
     Matrix();

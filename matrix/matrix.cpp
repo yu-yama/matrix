@@ -173,6 +173,31 @@ void Matrix<T>::remove_columns(typename vector<T>::size_type p) {
 // }
 
 template <class T>
+void Matrix<T>::resize_skip(typename vector<T>::size_type nn, typename vector<T>::size_type mm, typename vector<T>::size_type skipy, typename vector<T>::size_type skipx) {
+    if (n == nn && m == mm) return;
+    // if n < nn, then (nn - n) rows from skipy-th row of return matrix are left as zero vectors
+    // if n > nn, then (n - nn) rows from skipy-th row of argument matrix are removed
+    // if m < mm, then (mm - m) columns from skipx-th column of return matrix are left as zero vectors
+    // if m > mm, then (m - mm) columns from skipx-th column of argument matrix are removed
+    vector<T> temp(nn * mm);
+    typename vector<T>::size_type tempi, tempj;
+    for (typename vector<T>::size_type i = 0; i < min(n, nn); ++i) {
+        if (i < skipy) tempi = i;
+        else if (i >= skipy + (n >= nn ? n - nn : 0)) tempi = i - (n - nn);
+        else continue;
+        for (typename vector<T>::size_type j = 0; j < min(m, mm); ++j) {
+            if (j < skipx) tempj = j;
+            else if (j >= skipx + (m >= mm ? m - mm : 0)) tempj = j - (m - mm);
+            else continue;
+            temp.at(tempi * mm + tempj) = mat.at(i * m + j);
+        }
+    }
+    mat = temp;
+    n = nn;
+    m = mm;
+}
+
+template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn) {
     resize(nn, m);
 }
@@ -180,11 +205,12 @@ void Matrix<T>::resize(typename vector<T>::size_type nn) {
 template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn, typename vector<T>::size_type mm) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: resize(int, int): " << nn << ", " << mm << '\n';
-    vector<T> temp(nn * mm);
-    for (typename vector<T>::size_type i = 0; i < min(n, nn); ++i) for (typename vector<T>::size_type j = 0; j < min(m, mm); ++j) temp.at(i * mm + j) = mat.at(i * m + j);
-    mat = temp;
-    n = nn;
-    m = mm;
+    // vector<T> temp(nn * mm);
+    // for (typename vector<T>::size_type i = 0; i < min(n, nn); ++i) for (typename vector<T>::size_type j = 0; j < min(m, mm); ++j) temp.at(i * mm + j) = mat.at(i * m + j);
+    // mat = temp;
+    // n = nn;
+    // m = mm;
+    resize_skip(nn, mm, n, m);
     if (___MATRIXINTARRAY_DEBUG_) cout << "End  : resize(int, int): " << nn << ", " << mm << '\n';
 }
 
