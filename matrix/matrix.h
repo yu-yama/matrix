@@ -72,6 +72,8 @@ public:
     bool operator==(const Matrix& p) const;
     bool operator!=(const Matrix& p) const;
 
+    bool is_zero() const;
+
     Matrix gauss() const;
     Matrix gauss_jordan() const;
     T det() const;

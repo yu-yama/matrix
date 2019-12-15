@@ -127,7 +127,7 @@ Matrix<T>& Matrix<T>::operator+=(Matrix<T> p) {
         errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) (*this).at(i, j) += p.at(i, j);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) at(i, j) += p.at(i, j);
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: assign +=\n";
     return *this;
 }
@@ -140,7 +140,7 @@ Matrix<T>& Matrix<T>::operator-=(Matrix<T> p) {
         errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) (*this).at(i, j) -= p.at(i, j);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) at(i, j) -= p.at(i, j);
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: assign -=\n";
     return *this;
 }
@@ -156,7 +156,7 @@ Matrix<T>& Matrix<T>::operator*=(Matrix<T> p) {
 template <class T>
 Matrix<T>& Matrix<T>::operator*=(T p) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: assign *= Scalar\n";
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) (*this).at(i, j) *= p;
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) at(i, j) *= p;
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: assign *= Scalar\n";
     return *this;
 }
@@ -172,7 +172,7 @@ Matrix<T>& Matrix<T>::operator/=(Matrix<T> p) {
 template <class T>
 Matrix<T>& Matrix<T>::operator/=(T p) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: assign /= Scalar\n";
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) (*this).at(i, j) /= p;
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) at(i, j) /= p;
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: assign /= Scalar\n";
     return *this;
 }
@@ -204,7 +204,7 @@ Matrix<T> Matrix<T>::operator*(Matrix<T> p) const {
         throw invalid_argument(errMsg.str());
     }
     Matrix<T> ans(n, p.m);
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) for (typename vector<T>::size_type k = 0; k < p.m; ++k) ans.at(i, k) += (*this).at(i, j) * p.at(j, k);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) for (typename vector<T>::size_type k = 0; k < p.m; ++k) ans.at(i, k) += at(i, j) * p.at(j, k);
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: binary * Matrix\n";
     return ans;
 }
@@ -243,7 +243,7 @@ template <class T>
 bool Matrix<T>::operator==(const Matrix<T>& p) const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: comparison ==\n";
     if (n != p.n || m != p.m) return false;
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) if ((*this).at(i, j) != p.at(i, j)) return false;
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) if (at(i, j) != p.at(i, j)) return false;
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: comparison ==\n";
     return true;
 }
@@ -253,6 +253,12 @@ bool Matrix<T>::operator!=(const Matrix<T>& p) const {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: comparison !=\n";
     if (___MATRIXINTARRAY_DEBUG_) cout << "End r: comparison !=\n";
     return !(*this == p);
+}
+
+template <class T>
+bool Matrix<T>::is_zero() const {
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) if (at(i, j)) return false;
+    return true;
 }
 
 template <class T>
