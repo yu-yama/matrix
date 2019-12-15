@@ -167,10 +167,89 @@ void Matrix<T>::remove_columns(typename vector<T>::size_type p) {
     resize(n, m - p);
 }
 
-// template <class T>
-// void Matrix<T>::insert_row(typename vector<T>::size_type p, vector<T> q) {
-//     ;
-// }
+template <class T>
+void Matrix<T>::insert_row(typename vector<T>::size_type p, vector<T> q) {
+    if (m != q.size()) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << 1 << "x" << q.size() << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n + 1, m, p, m);
+    for (typename vector<T>::size_type j = 0; j < m; ++j) at(p, j) = q.at(j);
+}
+
+template <class T>
+void Matrix<T>::delete_row(typename vector<T>::size_type p) {
+    if (!n) {
+        ostringstream errMsg;
+        errMsg << "The matrix is empty\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n - 1, m, p, m);
+}
+
+template <class T>
+void Matrix<T>::insert_column(typename vector<T>::size_type p, vector<T> q) {
+    if (n != q.size()) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << q.size() << "x" << 1 << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n, m + 1, n, p);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) at(i, p) = q.at(i);
+}
+
+template <class T>
+void Matrix<T>::delete_column(typename vector<T>::size_type p) {
+    if (!m) {
+        ostringstream errMsg;
+        errMsg << "The matrix is empty\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n, m - 1, m, p);
+}
+
+template <class T>
+void Matrix<T>::insert_rows(typename vector<T>::size_type p, Matrix<T> q) {
+    if (m != q.m) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << q.n << "x" << q.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n + q.n, m, p, m);
+    for (typename vector<T>::size_type i = 0; i < q.n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) at(p + i, j) = q.at(i, j);
+}
+
+template <class T>
+void Matrix<T>::delete_rows(typename vector<T>::size_type p, typename std::vector<T>::size_type q) {
+    if (n < q) {
+        ostringstream errMsg;
+        errMsg << "The number of rows being removed is exceeding the matrix (" << q << " rows from " << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n - q, m, p, m);
+}
+
+template <class T>
+void Matrix<T>::insert_columns(typename vector<T>::size_type p, Matrix<T> q) {
+    if (n != q.n) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << q.n << "x" << q.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n, m + q.m, n, p);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < q.m; ++j) at(i, p + j) = q.at(i, j);
+}
+
+template <class T>
+void Matrix<T>::delete_columns(typename vector<T>::size_type p, typename std::vector<T>::size_type q) {
+    if (m < q) {
+        ostringstream errMsg;
+        errMsg << "The number of columns being removed is exceeding the matrix (" << q << " columns from " << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize_skip(n, m - q, n, p);
+}
 
 template <class T>
 void Matrix<T>::resize_skip(typename vector<T>::size_type nn, typename vector<T>::size_type mm, typename vector<T>::size_type skipy, typename vector<T>::size_type skipx) {
