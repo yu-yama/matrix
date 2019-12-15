@@ -422,12 +422,23 @@ Matrix<T> Matrix<T>::projection(Matrix<T> p) const {
     return p * (dot(p) / p.norm_squared());
 }
 
+template <class T>
+Matrix<T> Matrix<T>::basis() const {
+    Matrix<T> temp1;
+    typename vector<T>::size_type temp2;
+    tie(temp1, ignore, temp2) = transpose().gauss_count();
+    temp1.resize(temp2);
+    return temp1;
+}
+
 // template <class T>
 // Matrix<T> Matrix<T>::orthonormal() const {
 //     tuple<Matrix<T>, bool, typename vector<T>::size_type> temp1 = transpose().gauss_count();
-//     Matrix<T> temp2 = get<0>().resize(get<2>());
+//     get<0>(temp1).resize(get<2>(temp1));
 //     for (typename vector<T>::size_type i = 0; i < n; ++i) {
+//         ;
 //     }
+//     return get<0>(temp1);
 // }
 
 template <class T>

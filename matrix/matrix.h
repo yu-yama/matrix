@@ -26,6 +26,7 @@ private:
     typename std::vector<T>::size_type n = 0, m = 0;
 
     std::tuple<Matrix, bool, typename std::vector<T>::size_type> gauss_count() const;
+    Matrix basis() const;
 
 public:
     Matrix();
