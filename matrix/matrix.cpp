@@ -80,7 +80,9 @@ const T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size
 template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn, typename vector<T>::size_type mm) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: resize(int, int): " << nn << ", " << mm << '\n';
-    mat = vector<T>(nn * mm);
+    vector<T> temp(nn * mm);
+    for (typename vector<T>::size_type i = 0; i < min(n, nn); ++i) for (typename vector<T>::size_type j = 0; j < min(m, mm); ++j) temp.at(i * mm + j) = mat.at(i * m + j);
+    mat = temp;
     n = nn;
     m = mm;
     if (___MATRIXINTARRAY_DEBUG_) cout << "End  : resize(int, int): " << nn << ", " << mm << '\n';
@@ -414,6 +416,14 @@ template <class T>
 Matrix<T> Matrix<T>::projection(Matrix<T> p) const {
     return p * (dot(p) / p.norm_squared());
 }
+
+// template <class T>
+// Matrix<T> Matrix<T>::orthonormal() const {
+//     tuple<Matrix<T>, bool, typename vector<T>::size_type> temp1 = transpose().gauss_count();
+//     Matrix<T> temp2 = get<0>().resize(get<2>());
+//     for (typename vector<T>::size_type i = 0; i < n; ++i) {
+//     }
+// }
 
 template <class T>
 Matrix<T> Matrix<T>::cross(Matrix<T> p) const {

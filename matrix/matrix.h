@@ -22,8 +22,8 @@ template <typename T>
 class Matrix {
     // typedef typename std::vector<T>::size_type size_type;
 private:
-    std::vector<T> mat;
-    typename std::vector<T>::size_type n, m;
+    std::vector<T> mat = {};
+    typename std::vector<T>::size_type n = 0, m = 0;
 
     std::tuple<Matrix, bool, typename std::vector<T>::size_type> gauss_count() const;
 
@@ -86,6 +86,7 @@ public:
     T dot(Matrix p) const;
     bool orthogonal(Matrix p) const;
     Matrix projection(Matrix p) const;
+    // Matrix orthonormal() const;
     Matrix cross(Matrix p) const;
 
     T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
