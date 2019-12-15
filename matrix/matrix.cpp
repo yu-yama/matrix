@@ -78,6 +78,66 @@ const T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size
 }
 
 template <class T>
+void Matrix<T>::push_row(vector<T> p) {
+    if (m != p.size()) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << 1 << "x" << p.size() << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize(n + 1);
+    // Attention: the variable n is changed in "resize" method
+    for (typename vector<T>::size_type j = 0; j < m; ++j) at(n - 1, j) = p.at(j);
+}
+
+template <class T>
+void Matrix<T>::pop_row() {
+    resize(n - 1);
+}
+
+template <class T>
+void Matrix<T>::push_column(vector<T> p) {
+    if (n != p.size()) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.size() << "x" << 1 << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize(n, m + 1);
+    // Attention: the variable m is changed in "resize" method
+    for (typename vector<T>::size_type i = 0; i < n; ++i) at(i, m - 1) = p.at(i);
+}
+
+template <class T>
+void Matrix<T>::pop_column() {
+    resize(n, m - 1);
+}
+
+template <class T>
+void Matrix<T>::append_rows(Matrix<T> p) {
+    if (m != p.m) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    typename vector<T>::size_type nc = n;
+    resize(n + p.n);
+    // Attention: the variable n is changed in "resize" method
+    for (typename vector<T>::size_type i = 0; i < p.n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) at(i + nc, j) = p.at(i, j);
+}
+
+template <class T>
+void Matrix<T>::append_columns(Matrix<T> p) {
+    if (n != p.n) {
+        ostringstream errMsg;
+        errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    typename vector<T>::size_type mc = m;
+    resize(n, m + p.m);
+    // Attention: the variable m is changed in "resize" method
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < p.m; ++j) at(i, j + mc) = p.at(i, j);
+}
+
+template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn) {
     resize(nn, m);
 }
@@ -439,8 +499,8 @@ Matrix<T> Matrix<T>::basis() const {
 
 // template <class T>
 // Matrix<T> Matrix<T>::orthonormal() const {
-//     tuple<Matrix<T>, bool, typename vector<T>::size_type> temp1 = transpose().gauss_count();
-//     get<0>(temp1).resize(get<2>(temp1));
+//     vector< vector<T> > temp;
+//     temp.reserve(n);
 //     for (typename vector<T>::size_type i = 0; i < n; ++i) {
 //         ;
 //     }

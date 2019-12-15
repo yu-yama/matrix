@@ -44,6 +44,14 @@ public:
     T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c);
     const T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c) const;
 
+    void push_row(std::vector<T> p);
+    void pop_row();
+    void push_column(std::vector<T> p);
+    void pop_column();
+
+    void append_rows(Matrix p);
+    void append_columns(Matrix p);
+
     void resize(typename std::vector<T>::size_type nn);
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm);
     Matrix  operator+() const;
