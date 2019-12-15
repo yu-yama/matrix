@@ -91,6 +91,11 @@ void Matrix<T>::push_row(vector<T> p) {
 
 template <class T>
 void Matrix<T>::pop_row() {
+    if (!n) {
+        ostringstream errMsg;
+        errMsg << "The matrix is empty\n";
+        throw invalid_argument(errMsg.str());
+    }
     resize(n - 1);
 }
 
@@ -108,6 +113,11 @@ void Matrix<T>::push_column(vector<T> p) {
 
 template <class T>
 void Matrix<T>::pop_column() {
+    if (!m) {
+        ostringstream errMsg;
+        errMsg << "The matrix is empty\n";
+        throw invalid_argument(errMsg.str());
+    }
     resize(n, m - 1);
 }
 
