@@ -78,6 +78,11 @@ const T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size
 }
 
 template <class T>
+void Matrix<T>::resize(typename vector<T>::size_type nn) {
+    resize(nn, m);
+}
+
+template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn, typename vector<T>::size_type mm) {
     if (___MATRIXINTARRAY_DEBUG_) cout << "Start: resize(int, int): " << nn << ", " << mm << '\n';
     vector<T> temp(nn * mm);

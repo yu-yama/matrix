@@ -43,6 +43,7 @@ public:
     T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c);
     const T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c) const;
 
+    void resize(typename std::vector<T>::size_type nn);
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm);
     Matrix  operator+() const;
     Matrix  operator-() const;
