@@ -138,6 +138,26 @@ void Matrix<T>::append_columns(Matrix<T> p) {
 }
 
 template <class T>
+void Matrix<T>::remove_rows(typename vector<T>::size_type p) {
+    if (n < p) {
+        ostringstream errMsg;
+        errMsg << "The number of rows being removed is exceeding the matrix (" << p << " rows from " << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize(n - p);
+}
+
+template <class T>
+void Matrix<T>::remove_columns(typename vector<T>::size_type p) {
+    if (m < p) {
+        ostringstream errMsg;
+        errMsg << "The number of columns being removed is exceeding the matrix (" << p << " columns from " << n << "x" << m << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    resize(n, m - p);
+}
+
+template <class T>
 void Matrix<T>::resize(typename vector<T>::size_type nn) {
     resize(nn, m);
 }

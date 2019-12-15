@@ -51,6 +51,8 @@ public:
 
     void append_rows(Matrix p);
     void append_columns(Matrix p);
+    void remove_rows(typename std::vector<T>::size_type p);
+    void remove_columns(typename std::vector<T>::size_type p);
 
     void resize(typename std::vector<T>::size_type nn);
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm);
