@@ -1,8 +1,6 @@
 #ifndef ___MATRIX_INCLUDED_
 #define ___MATRIX_INCLUDED_
 
-#define ___MATRIXINTARRAY_DEBUG_ false
-
 #include <string>
 #include <iostream>
 #include <vector>
@@ -132,16 +130,12 @@ public:
 
 template <typename T>
 std::ostream& operator<<(std::ostream& s, const Matrix<T>& x) {
-    if (___MATRIXINTARRAY_DEBUG_) std::cout << "Start: ostream <<\n";
-    if (___MATRIXINTARRAY_DEBUG_) std::cout << "End r: ostream <<\n";
     return s << x.to_string();
 }
 
 template <typename T>
 std::istream& operator>>(std::istream& s,       Matrix<T>& x) {
-    if (___MATRIXINTARRAY_DEBUG_) std::cout << "Start: istream >>\n";
     for (typename std::vector<T>::size_type i = 0; i < x.row(); ++i) for (typename std::vector<T>::size_type j = 0; j < x.column(); ++j) s >> x.at(i, j);
-    if (___MATRIXINTARRAY_DEBUG_) std::cout << "End r: istream >>\n";
     return s;
 }
 
