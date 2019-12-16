@@ -2,7 +2,7 @@
 
 This library provides matrices computation features with a header file, `src/matrix.h`, and a cpp file `src/matrix.cpp`.
 
-## I. How to Use
+## I. How to use
 Add `#include "matrix.h"` in the preamble of your source code, then link your object file with the object file of `src/matrix.cpp`.
 
 To compile the test code, `src/test.cpp` (which is not quite user-friendly yet), type `make test` in your terminal. Type `make run` or `./TEST_CPP` to run.
@@ -10,7 +10,7 @@ To compile the test code, `src/test.cpp` (which is not quite user-friendly yet),
 ## II. Classes provided
 Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test.cpp`, the classes are explicitly specialized for `short`, `int`, `long`, `long long`, `float`, `double`, and `long double`. Since a number of methods involve negative numbers, it is strongly discouraged to use `unsigned` types.
 
-## III. List of Features
+## III. List of features
 ### 1. Matrix template class `Matrix<T>`
 #### a. Member Variables
 * `vector<T> mat` – stores the elements of a matrix
