@@ -719,6 +719,11 @@ template class Matrix<double>;
 template class Matrix<long double>;
 
 template <class T>
+AugmentedMatrix<T>::AugmentedMatrix() {
+    resize(0, 0, 0);
+}
+
+template <class T>
 AugmentedMatrix<T>::AugmentedMatrix(typename vector<T>::size_type n, typename vector<T>::size_type ml) {
     resize(n, ml, 1);
 }

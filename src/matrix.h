@@ -150,9 +150,10 @@ template <typename T>
 class AugmentedMatrix {
 private:
     Matrix<T> matl, matr;
-    typename std::vector<T>::size_type n, ml, mr;
+    typename std::vector<T>::size_type n = 0, ml = 0, mr = 0;
 
 public:
+    AugmentedMatrix();
     AugmentedMatrix(typename std::vector<T>::size_type n, typename std::vector<T>::size_type ml);
     AugmentedMatrix(typename std::vector<T>::size_type n, typename std::vector<T>::size_type ml, typename std::vector<T>::size_type mr);
     AugmentedMatrix(Matrix<T> mmatl);
