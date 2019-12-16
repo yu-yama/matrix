@@ -39,7 +39,9 @@ public:
     typename std::vector<T>::size_type column() const { return m; }
 
     std::vector<T> at_row   (typename std::vector<T>::size_type y) const;
+    std::vector<T*> at_row   (typename std::vector<T>::size_type y);
     std::vector<T> at_column(typename std::vector<T>::size_type x) const;
+    std::vector<T*> at_column(typename std::vector<T>::size_type x);
     T& at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x);
     const T& at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
 
