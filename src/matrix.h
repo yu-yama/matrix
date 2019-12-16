@@ -38,10 +38,10 @@ public:
     typename std::vector<T>::size_type row()    const { return n; }
     typename std::vector<T>::size_type column() const { return m; }
 
-    std::vector<T> at_row   (typename std::vector<T>::size_type r) const;
-    std::vector<T> at_column(typename std::vector<T>::size_type c) const;
-    T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c);
-    const T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c) const;
+    std::vector<T> at_row   (typename std::vector<T>::size_type y) const;
+    std::vector<T> at_column(typename std::vector<T>::size_type x) const;
+    T& at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x);
+    const T& at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
 
     void push_row(std::vector<T> p);
     void pop_row();
@@ -162,12 +162,12 @@ public:
     typename std::vector<T>::size_type row() const { return n; }
     typename std::pair<typename std::vector<T>::size_type, typename std::vector<T>::size_type> column() const { return {ml, mr}; }
 
-    std::pair< std::vector<T>, std::vector<T> > at_row (typename std::vector<T>::size_type r) const;
-    std::vector<T> at_column (typename std::vector<T>::size_type c) const;
-    std::vector<T> at_columnl(typename std::vector<T>::size_type c) const;
-    std::vector<T> at_columnr(typename std::vector<T>::size_type c) const;
-    T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c);
-    const T& at(typename std::vector<T>::size_type r, typename std::vector<T>::size_type c) const;
+    std::pair< std::vector<T>, std::vector<T> > at_row (typename std::vector<T>::size_type y) const;
+    std::vector<T> at_column (typename std::vector<T>::size_type x) const;
+    std::vector<T> at_columnl(typename std::vector<T>::size_type x) const;
+    std::vector<T> at_columnr(typename std::vector<T>::size_type x) const;
+    T& at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x);
+    const T& at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
 
     Matrix<T> left() const;
     Matrix<T> right() const;

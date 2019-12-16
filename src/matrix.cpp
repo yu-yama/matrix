@@ -41,28 +41,28 @@ Matrix<T>::Matrix(const Matrix<T>& p) {
 }
 
 template <class T>
-vector<T> Matrix<T>::at_row (typename vector<T>::size_type r) const {
+vector<T> Matrix<T>::at_row (typename vector<T>::size_type y) const {
     vector<T> res(m);
-    for (typename vector<T>::size_type i = 0; i < m; ++i) res.at(i) = at(r, i);
+    for (typename vector<T>::size_type i = 0; i < m; ++i) res.at(i) = at(y, i);
     return res;
 }
 
 template <class T>
-vector<T> Matrix<T>::at_column(typename vector<T>::size_type c) const {
+vector<T> Matrix<T>::at_column(typename vector<T>::size_type x) const {
     vector<T> res(n);
-    for (typename vector<T>::size_type i = 0; i < n; ++i) res.at(i) = at(i, c);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) res.at(i) = at(i, x);
     return res;
 }
 
 
 template <class T>
-T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size_type c) {
-    return mat.at(r * m + c);
+T& Matrix<T>::at(typename vector<T>::size_type y, typename vector<T>::size_type x) {
+    return mat.at(y * m + x);
 }
 
 template <class T>
-const T& Matrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size_type c) const {
-    return mat.at(r * m + c);
+const T& Matrix<T>::at(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+    return mat.at(y * m + x);
 }
 
 template <class T>
@@ -741,56 +741,56 @@ AugmentedMatrix<T>::AugmentedMatrix(const AugmentedMatrix& p) {
 }
 
 template <class T>
-pair< vector<T>, vector<T> > AugmentedMatrix<T>::at_row (typename vector<T>::size_type r) const {
-    if (r < 0 || r >= n) {
+pair< vector<T>, vector<T> > AugmentedMatrix<T>::at_row (typename vector<T>::size_type y) const {
+    if (y < 0 || y >= n) {
         ostringstream errMsg;
-        errMsg << "The argument is out of range (" << r << "-th row is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
+        errMsg << "The argument is out of range (" << y << "-th row is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
         throw out_of_range(errMsg.str());
     }
-    return make_pair(matl.at_row(r), matr.at_row(r));
+    return make_pair(matl.at_row(y), matr.at_row(y));
 }
 
 template <class T>
-vector<T> AugmentedMatrix<T>::at_column (typename vector<T>::size_type c) const {
-    if (c < 0 || c >= ml + mr) {
+vector<T> AugmentedMatrix<T>::at_column (typename vector<T>::size_type x) const {
+    if (x < 0 || x >= ml + mr) {
         ostringstream errMsg;
-        errMsg << "The argument is out of range (" << c << "-th column is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
+        errMsg << "The argument is out of range (" << x << "-th column is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
         throw out_of_range(errMsg.str());
     }
-    if (c < ml) return at_columnl(c);
-    else return at_columnr(c - ml);
+    if (x < ml) return at_columnl(x);
+    else return at_columnr(x - ml);
 }
 
 template <class T>
-vector<T> AugmentedMatrix<T>::at_columnl(typename vector<T>::size_type c) const {
-    return matl.at_column(c);
+vector<T> AugmentedMatrix<T>::at_columnl(typename vector<T>::size_type x) const {
+    return matl.at_column(x);
 }
 
 template <class T>
-vector<T> AugmentedMatrix<T>::at_columnr(typename vector<T>::size_type c) const {
-    return matr.at_column(c);
+vector<T> AugmentedMatrix<T>::at_columnr(typename vector<T>::size_type x) const {
+    return matr.at_column(x);
 }
 
 template <class T>
-T& AugmentedMatrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size_type c) {
-    if (c < 0 || c >= ml + mr) {
+T& AugmentedMatrix<T>::at(typename vector<T>::size_type y, typename vector<T>::size_type x) {
+    if (x < 0 || x >= ml + mr) {
         ostringstream errMsg;
-        errMsg << "The argument is out of range ((" << r << ", " << c << ") is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
+        errMsg << "The argument is out of range ((" << y << ", " << x << ") is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
         throw out_of_range(errMsg.str());
     }
-    if (c < ml) return matl.at(r, c);
-    else return matr.at(r, c - ml);
+    if (x < ml) return matl.at(y, x);
+    else return matr.at(y, x - ml);
 }
 
 template <class T>
-const T& AugmentedMatrix<T>::at(typename vector<T>::size_type r, typename vector<T>::size_type c) const {
-    if (c < 0 || c >= ml + mr) {
+const T& AugmentedMatrix<T>::at(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+    if (x < 0 || x >= ml + mr) {
         ostringstream errMsg;
-        errMsg << "The argument is out of range ((" << r << ", " << c << ") is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
+        errMsg << "The argument is out of range ((" << y << ", " << x << ") is called for [" << n << "x" << ml << "|" << n << "x" << mr << "] augmented matrix\n";
         throw out_of_range(errMsg.str());
     }
-    if (c < ml) return matl.at(r, c);
-    else return matr.at(r, c - ml);
+    if (x < ml) return matl.at(y, x);
+    else return matr.at(y, x - ml);
 }
 
 template <class T>
