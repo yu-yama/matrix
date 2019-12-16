@@ -42,6 +42,11 @@ Matrix<T>::Matrix(const Matrix<T>& p) {
 
 template <class T>
 vector<T> Matrix<T>::at_row (typename vector<T>::size_type y) const {
+    if (y < 0 || y >= n) {
+        ostringstream errMsg;
+        errMsg << "The argument is out of range (" << y << "-th row is called for " << n << "x" << m << " matrix\n";
+        throw out_of_range(errMsg.str());
+    }
     vector<T> res(m);
     for (typename vector<T>::size_type i = 0; i < m; ++i) res.at(i) = at(y, i);
     return res;
@@ -49,6 +54,11 @@ vector<T> Matrix<T>::at_row (typename vector<T>::size_type y) const {
 
 template <class T>
 vector<T> Matrix<T>::at_column(typename vector<T>::size_type x) const {
+    if (x < 0 || x >= m) {
+        ostringstream errMsg;
+        errMsg << "The argument is out of range (" << x << "-th column is called for " << n << "x" << m << " matrix\n";
+        throw out_of_range(errMsg.str());
+    }
     vector<T> res(n);
     for (typename vector<T>::size_type i = 0; i < n; ++i) res.at(i) = at(i, x);
     return res;
@@ -57,11 +67,21 @@ vector<T> Matrix<T>::at_column(typename vector<T>::size_type x) const {
 
 template <class T>
 T& Matrix<T>::at(typename vector<T>::size_type y, typename vector<T>::size_type x) {
+    if (y < 0 || y >= n || x < 0 || x >= m) {
+        ostringstream errMsg;
+        errMsg << "The argument is out of range ((" << y << ", " << x << ") is called for " << n << "x" << m << " matrix\n";
+        throw out_of_range(errMsg.str());
+    }
     return mat.at(y * m + x);
 }
 
 template <class T>
 const T& Matrix<T>::at(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+    if (y < 0 || y >= n || x < 0 || x >= m) {
+        ostringstream errMsg;
+        errMsg << "The argument is out of range ((" << y << ", " << x << ") is called for " << n << "x" << m << " matrix\n";
+        throw out_of_range(errMsg.str());
+    }
     return mat.at(y * m + x);
 }
 
