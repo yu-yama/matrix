@@ -51,8 +51,8 @@ public:
     void pop_column();
 
     void append_rows(Matrix p);
-    void append_columns(Matrix p);
     void remove_rows(typename std::vector<T>::size_type p);
+    void append_columns(Matrix p);
     void remove_columns(typename std::vector<T>::size_type p);
 
     void insert_row(typename std::vector<T>::size_type p, std::vector<T> q);

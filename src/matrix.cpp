@@ -167,6 +167,16 @@ void Matrix<T>::append_rows(Matrix<T> p) {
 }
 
 template <class T>
+void Matrix<T>::remove_rows(typename vector<T>::size_type p) {
+    if (n < p) {
+        ostringstream errMsg;
+        errMsg << "The number of rows being removed is exceeding the matrix (" << p << " rows from " << n << "x" << m << ")\n";
+        throw length_error(errMsg.str());
+    }
+    resize(n - p);
+}
+
+template <class T>
 void Matrix<T>::append_columns(Matrix<T> p) {
     if (n != p.n) {
         ostringstream errMsg;
@@ -177,16 +187,6 @@ void Matrix<T>::append_columns(Matrix<T> p) {
     resize(n, m + p.m);
     // Attention: the variable m is changed in "resize" method
     for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < p.m; ++j) at(i, j + mc) = p.at(i, j);
-}
-
-template <class T>
-void Matrix<T>::remove_rows(typename vector<T>::size_type p) {
-    if (n < p) {
-        ostringstream errMsg;
-        errMsg << "The number of rows being removed is exceeding the matrix (" << p << " rows from " << n << "x" << m << ")\n";
-        throw length_error(errMsg.str());
-    }
-    resize(n - p);
 }
 
 template <class T>
