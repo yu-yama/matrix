@@ -102,7 +102,7 @@ void Matrix<T>::pop_row() {
     if (!n) {
         ostringstream errMsg;
         errMsg << "The matrix is empty\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize(n - 1);
 }
@@ -124,7 +124,7 @@ void Matrix<T>::pop_column() {
     if (!m) {
         ostringstream errMsg;
         errMsg << "The matrix is empty\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize(n, m - 1);
 }
@@ -160,7 +160,7 @@ void Matrix<T>::remove_rows(typename vector<T>::size_type p) {
     if (n < p) {
         ostringstream errMsg;
         errMsg << "The number of rows being removed is exceeding the matrix (" << p << " rows from " << n << "x" << m << ")\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize(n - p);
 }
@@ -170,7 +170,7 @@ void Matrix<T>::remove_columns(typename vector<T>::size_type p) {
     if (m < p) {
         ostringstream errMsg;
         errMsg << "The number of columns being removed is exceeding the matrix (" << p << " columns from " << n << "x" << m << ")\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize(n, m - p);
 }
@@ -191,7 +191,7 @@ void Matrix<T>::delete_row(typename vector<T>::size_type p) {
     if (!n) {
         ostringstream errMsg;
         errMsg << "The matrix is empty\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize_skip(n - 1, m, p, m);
 }
@@ -212,7 +212,7 @@ void Matrix<T>::delete_column(typename vector<T>::size_type p) {
     if (!m) {
         ostringstream errMsg;
         errMsg << "The matrix is empty\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize_skip(n, m - 1, m, p);
 }
@@ -233,7 +233,7 @@ void Matrix<T>::delete_rows(typename vector<T>::size_type p, typename std::vecto
     if (n < q) {
         ostringstream errMsg;
         errMsg << "The number of rows being removed is exceeding the matrix (" << q << " rows from " << n << "x" << m << ")\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize_skip(n - q, m, p, m);
 }
@@ -254,7 +254,7 @@ void Matrix<T>::delete_columns(typename vector<T>::size_type p, typename std::ve
     if (m < q) {
         ostringstream errMsg;
         errMsg << "The number of columns being removed is exceeding the matrix (" << q << " columns from " << n << "x" << m << ")\n";
-        throw invalid_argument(errMsg.str());
+        throw length_error(errMsg.str());
     }
     resize_skip(n, m - q, n, p);
 }
