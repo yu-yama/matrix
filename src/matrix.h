@@ -32,6 +32,7 @@ public:
     Matrix();
     Matrix(typename std::vector<T>::size_type n);
     Matrix(typename std::vector<T>::size_type n, typename std::vector<T>::size_type m);
+    Matrix(std::vector<T> vecData);
     Matrix(std::vector< std::vector<T> > matData);
     Matrix(std::vector<T> matData, typename std::vector<T>::size_type n);
     Matrix(const Matrix& p);

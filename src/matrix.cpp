@@ -25,6 +25,13 @@ Matrix<T>::Matrix(typename vector<T>::size_type n, typename vector<T>::size_type
 }
 
 template <class T>
+Matrix<T>::Matrix(vector<T> vecData) {
+    mat = vecData;
+    n = vecData.size();
+    m = 1;
+}
+
+template <class T>
 Matrix<T>::Matrix(vector< vector<T> > matData) {
     n = (typename vector<T>::size_type)matData.size();
     m = (typename vector<T>::size_type)0;
