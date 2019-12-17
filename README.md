@@ -7,10 +7,13 @@ Add `#include "matrix.h"` in the preamble of your source code, then link your ob
 
 To compile the test code, `src/test.cpp` (which is not quite user-friendly yet), type `make test` in your terminal. Type `make run` or `./TEST_CPP` to run.
 
-## II. Classes provided
+## II. Tested environment and compilation options
+The sources in the `src` directory are tested using `g++-9 (Homebrew GCC 9.2.0_2) 9.2.0` on `macOS Catalina` with compilation options `-std=c++17 -O2`.
+
+## III. Classes provided
 Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test.cpp`, the classes are explicitly specialized for `short`, `int`, `long`, `long long`, `float`, `double`, and `long double`. Since a number of methods involve negative numbers, it is strongly discouraged to use `unsigned` types.
 
-## III. List of features
+## IV. List of features
 ### 1. Matrix template class `Matrix<T>`
 #### a. Member Variables
 * `vector<T> mat` – stores the elements of a matrix
@@ -158,7 +161,7 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * `gauss()` – returns an augmented matrix after applying Gaussian elimination
 * `gauss_jordan()` – returns an augmented matrix after applying Gauss-Jordan elimination
 
-## IV. Features to be added in the (near) future
+## V. Features to be added in the (near) future
 * `orthonormal()` member function (Gram-Schmidt process)
 * QR-decomposition, QR-algorithm
 * Eigenvalue, eigenvector, eigenbasis, and eigenspace
