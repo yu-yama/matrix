@@ -16,6 +16,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: cd to sources
       run: cd ./src/
+    - name: check current directory
+      run: pwd
     - name: compile
       run: make test
     - name: run & check
