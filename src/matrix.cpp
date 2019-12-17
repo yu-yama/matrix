@@ -336,6 +336,21 @@ Matrix<T> Matrix<T>::operator-() const {
 }
 
 template <class T>
+vector<T> Matrix<T>::to_1d_vector() const {
+    if (n == 1 || m == 1) return mat;
+    ostringstream errMsg;
+    errMsg << "Argument is neither row nor column vector (" << n << "x" << m << ")\n";
+    throw invalid_argument(errMsg.str());
+}
+
+template <class T>
+vector< vector<T> > Matrix<T>::to_2d_vector() const {
+    vector< vector<T> > temp(n, vector<T>(m));
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at((typename vector< vector<T> >::size_type)i).at(j) = at(i, j);
+    return temp;
+}
+
+template <class T>
 Matrix<T>& Matrix<T>::operator=(Matrix<T> p) {
     mat = p.mat;
     n = p.n;
@@ -588,7 +603,7 @@ template <class T>
 T Matrix<T>::norm_squared() const {
     if (n != 1 && m != 1) {
         ostringstream errMsg;
-        errMsg << "Arguments are neither row nor column vector (" << n << "x" << m << ")\n";
+        errMsg << "Argument is neither row nor column vector (" << n << "x" << m << ")\n";
         throw invalid_argument(errMsg.str());
     }
     if (m != 1) return transpose().norm_squared();

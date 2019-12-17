@@ -70,6 +70,9 @@ public:
     Matrix  operator+() const;
     Matrix  operator-() const;
 
+    std::vector<T> to_1d_vector() const;
+    std::vector< std::vector<T> > to_2d_vector() const;
+
     Matrix& operator=(Matrix p);
 
     Matrix& operator+=(Matrix p);
