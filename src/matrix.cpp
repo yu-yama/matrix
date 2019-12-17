@@ -629,6 +629,13 @@ vector<T> vdiff(vector<T> p, vector<T> q) {
 }
 
 template <class T>
+vector<T> vscalar_mult(vector<T> p, T q) {
+    vector<T> t(p);
+    for (typename vector<T>::size_type i = 0; i < p.size(); ++i) t.at(i) *= q;
+    return t;
+}
+
+template <class T>
 T vnorm_squared(vector<T> p) {
     T ans = 0;
     for (typename vector<T>::size_type i = 0; i < p.size(); ++i) ans += p.at(i) * p.at(i);
@@ -637,17 +644,12 @@ T vnorm_squared(vector<T> p) {
 
 template <class T>
 T Matrix<T>::norm_squared() const {
-    if (n != 1 && m != 1) {
-        ostringstream errMsg;
-        errMsg << "Argument is neither row nor column vector (" << n << "x" << m << ")\n";
-        throw invalid_argument(errMsg.str());
-    }
-    return vnorm_squared(mat);
+    return vnorm_squared(to_1d_vector());
 }
 
 template <class T>
 double vnorm(vector<T> p) {
-    return sqrt((double)norm_squared(p));
+    return sqrt((double)vnorm_squared(p));
 }
 
 template <class T>
@@ -656,13 +658,30 @@ double Matrix<T>::norm() const {
 }
 
 template <class T>
+double vdistance(vector<T> p, vector<T> q) {
+    return vnorm(vdiff(p, q));
+}
+
+template <class T>
 double Matrix<T>::distance(Matrix<T> p) const {
     return (*this - p).norm();
 }
 
 template <class T>
+double vangle(vector<T> p, vector<T> q) {
+    return acos((double)vdot(p, q) / vnorm(p) / vnorm(q));
+}
+
+template <class T>
 double Matrix<T>::angle(Matrix<T> p) const {
     return acos((double)dot(p) / norm() / p.norm());
+}
+
+template <class T>
+T vdot(vector<T> p, vector<T> q) {
+    T ans = 0;
+    for (typename vector<T>::size_type i = 0; i < p.size(); ++i) ans += p.at(i) * q.at(i);
+    return ans;
 }
 
 template <class T>
@@ -676,15 +695,22 @@ T Matrix<T>::dot(Matrix<T> p) const {
         errMsg << "Arguments are neither row nor column vector (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    if (m != 1) return transpose().dot(p.transpose());
-    T ans = 0;
-    for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, 0) * p.at(i, 0);
-    return ans;
+    return vdot(to_1d_vector(), p.to_1d_vector());
+}
+
+template <class T>
+bool vorthogonal(vector<T> p, vector<T> q) {
+    return (vdot(p, q) == 0);
 }
 
 template <class T>
 bool Matrix<T>::orthogonal(Matrix<T> p) const {
     return (dot(p) == 0);
+}
+
+template <class T>
+vector<T> vprojection(vector<T> p, vector<T> q) {
+    return vscalar_mult(q, vdot(p, q) / vnorm_squared(q));
 }
 
 template <class T>
@@ -714,18 +740,25 @@ Matrix<T> Matrix<T>::basis() const {
 // }
 
 template <class T>
+vector<T> vcross(vector<T> p, vector<T> q) {
+    if (p.size() != 3 || q.size() != 3) {
+        ostringstream errMsg;
+        errMsg << "Arguments do not both have exactly three elements (" << p.size() << ", " << q.size() << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    vector<T> ans(3);
+    for (typename vector<T>::size_type i = 0; i < 3; ++i) ans.at(i) = p.at((i + 1) % 3) * q.at((i + 2) % 3) - p.at((i + 2) % 3) * q.at((i + 1) % 3);
+    return ans;
+}
+
+template <class T>
 Matrix<T> Matrix<T>::cross(Matrix<T> p) const {
     if (n != p.n || m != p.m) {
         ostringstream errMsg;
         errMsg << "Dimensions of matrices do not match (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
         throw invalid_argument(errMsg.str());
     }
-    if (n == 1 && m == 3) return transpose().cross(p.transpose());
-    if (n == 3 && m == 1) {
-        Matrix<T> ans(3);
-        for (typename vector<T>::size_type i = 0; i < 3; ++i) ans.at(i, 0) = at((i + 1) % 3, 0) * p.at((i + 2) % 3, 0) - at((i + 2) % 3, 0) * p.at((i + 1) % 3, 0);
-        return ans;
-    }
+    if ((n == 1 && m == 3) || (n == 3 && m == 1)) return Matrix<T>(vcross(to_1d_vector(), p.to_1d_vector()));
     ostringstream errMsg;
     errMsg << "Arguments are neither 3x1 nor 1x3 vector (" << n << "x" << m << ", " << p.n << "x" << p.m << ")\n";
     throw invalid_argument(errMsg.str());

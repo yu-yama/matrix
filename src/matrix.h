@@ -156,12 +156,26 @@ Matrix<T> identity_matrix(typename std::vector<T>::size_type n, T val) {
 
 template <typename T>
 std::vector<T> vdiff(std::vector<T> p, std::vector<T> q);
+template <typename T>
+std::vector<T> vscalar_mult(std::vector<T> p, T q);
 
 template <typename T>
 T vnorm_squared(std::vector<T> p);
-
 template <typename T>
 double vnorm(std::vector<T> p);
+template <typename T>
+double vdistance(std::vector<T> p, std::vector<T> q);
+template <typename T>
+double vangle(std::vector<T> p, std::vector<T> q);
+
+template <typename T>
+T vdot(std::vector<T> p, std::vector<T> q);
+template <typename T>
+bool vorthogonal(std::vector<T> p, std::vector<T> q);
+template <typename T>
+std::vector<T> vprojection(std::vector<T> p, std::vector<T> q);
+template <typename T>
+std::vector<T> vcross(std::vector<T> p, std::vector<T> q);
 
 template <typename T>
 class AugmentedMatrix {
