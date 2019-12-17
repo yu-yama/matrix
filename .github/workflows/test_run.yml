@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: compile
-      run: cd ./src && make test
+      run: cd ./src && make test-github
     - name: run & check
       run: cd ./src && make run
     - name: cleanup
