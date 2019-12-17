@@ -154,10 +154,10 @@ Matrix<T> identity_matrix(typename std::vector<T>::size_type n, T val) {
 }
 
 template <typename T>
-T norm_squared(std::vector<T> p);
+T vnorm_squared(std::vector<T> p);
 
 template <typename T>
-double norm(std::vector<T> p);
+double vnorm(std::vector<T> p);
 
 template <typename T>
 class AugmentedMatrix {
