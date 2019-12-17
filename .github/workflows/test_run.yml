@@ -18,6 +18,8 @@ jobs:
       run: cd ./src/
     - name: check current directory
       run: echo ${PWD}
+    - name: check current directory when cd is executed in the same line
+      run: cd ./src/ && echo ${PWD}
     - name: compile
       run: make test
     - name: run & check
