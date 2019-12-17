@@ -11,17 +11,17 @@ using namespace std;
 
 template <class T>
 Matrix<T>::Matrix() {
-    resize(0, 0);
+    resize(0, 0, false);
 }
 
 template <class T>
 Matrix<T>::Matrix(typename vector<T>::size_type n) {
-    resize(n, 1);
+    resize(n, 1, false);
 }
 
 template <class T>
 Matrix<T>::Matrix(typename vector<T>::size_type n, typename vector<T>::size_type m) {
-    resize(n, m);
+    resize(n, m, false);
 }
 
 template <class T>
