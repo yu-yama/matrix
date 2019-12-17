@@ -30,7 +30,7 @@ Matrix<T>::Matrix(vector< vector<T> > matData) {
     m = (typename vector<T>::size_type)0;
     for (typename vector< vector<T> >::size_type i = 0; i < n; ++i) m = max(m, (typename vector<T>::size_type)matData.at(i).size());
     mat = vector<T>(n * m);
-    for (typename vector< vector<T> >::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < matData.at(i).size(); ++j) mat.at((typename vector<T>::size_type)i * m + j) = matData.at(i).at(j);
+    for (typename vector< vector<T> >::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < matData.at(i).size(); ++j) at((typename vector<T>::size_type)i, j) = matData.at(i).at(j);
 }
 
 template <class T>
