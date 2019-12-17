@@ -650,12 +650,14 @@ Matrix<T> Matrix<T>::basis() const {
 
 // template <class T>
 // Matrix<T> Matrix<T>::orthonormal() const {
-//     vector< vector<T> > temp;
-//     temp.reserve(n);
+//     Matrix<T> temp1 = transpose(), temp2 = temp1;
 //     for (typename vector<T>::size_type i = 0; i < n; ++i) {
-//         ;
+//         for (typename vector<T>::size_type ii = 0; ii < i; ++ii) {
+//             Matrix<T> temp3 = temp1.at_row(i).projection(temp2.at_row(ii));
+//             for (typename vector<T>::size_type j = 0; j < m; ++j) temp2.at(i, j) -= temp3.at(0, j);
+//         }
 //     }
-//     return get<0>(temp1);
+//     return temp2;
 // }
 
 template <class T>
