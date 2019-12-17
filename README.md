@@ -110,8 +110,8 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * `projection(Matrix<T>)` – returns a projection of a matrix on the specified matrix
 * `orthonormal()` – returns an orthonormal basis of a matrix's column space
 * `cross(Matrix<T>)` – returns a cross product of two matrices; throws an `invalid_argument` exception when two matrices are neither both `3 x 1` column vectors nor `1 x 3` row vectors
-* `minor(y, x)` – returns a minor, _M<sub>yx</sub>_; throws an `invalid_argument` exception when the matrix is not a square matrix
-* `cofactor(y, x)` – returns a cofactor, _C<sub>yx</sub>_
+* `minor_at(y, x)` – returns a minor, _M<sub>yx</sub>_; throws an `invalid_argument` exception when the matrix is not a square matrix
+* `cofactor_at(y, x)` – returns a cofactor, _C<sub>yx</sub>_
 * `cofactor_matrix()` – returns the cofactor matrix
 * `adjugate()` – returns the adjugate
 * `transpose()` – returns the transpose

@@ -90,13 +90,13 @@ int main() {
 
     Matrix<double> ae1({{1, 2, 3}, {2, 5, 3}, {1, 0, 8}});
     Matrix<double> ae2({{1, 2}, {1, 0}});
-    cout << "000630\n" << ae1.minor(1, 2) << endl << ae1.cofactor(1, 2) << endl;
+    cout << "000630\n" << ae1.minor_at(1, 2) << endl << ae1.cofactor_at(1, 2) << endl;
     cout << "000650\n" << ae2.det() << endl;
 
     Matrix<double> af1(1, 1);
     af1.at(0, 0) = 1;
     Matrix<double> af2(0, 0);
-    cout << "000670\n" << af1.minor(0, 0) << endl << af1.cofactor(0, 0) << endl;
+    cout << "000670\n" << af1.minor_at(0, 0) << endl << af1.cofactor_at(0, 0) << endl;
     cout << "000690\n" << af2.det() << endl;
 
     Matrix<double> ag({{1, 2, 3}, {2, 5, 3}, {1, 0, 8}});

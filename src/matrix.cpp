@@ -778,7 +778,7 @@ Matrix<T> Matrix<T>::cross(Matrix<T> p) const {
 }
 
 template <class T>
-T Matrix<T>::minor(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+T Matrix<T>::minor_at(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
     if (n != m) {
         ostringstream errMsg;
         errMsg << "Argument is not square matrix (" << n << "x" << m << ")\n";
@@ -796,14 +796,14 @@ T Matrix<T>::minor(typename vector<T>::size_type y, typename vector<T>::size_typ
 }
 
 template <class T>
-T Matrix<T>::cofactor(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
-    return minor(y, x) * ((y + x) % 2 ? -1 : 1);
+T Matrix<T>::cofactor_at(typename vector<T>::size_type y, typename vector<T>::size_type x) const {
+    return minor_at(y, x) * ((y + x) % 2 ? -1 : 1);
 }
 
 template <class T>
 Matrix<T> Matrix<T>::cofactor_matrix() const {
     Matrix<T> temp(n, m);
-    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(i, j) = cofactor(i, j);
+    for (typename vector<T>::size_type i = 0; i < n; ++i) for (typename vector<T>::size_type j = 0; j < m; ++j) temp.at(i, j) = cofactor_at(i, j);
     return temp;
 }
 

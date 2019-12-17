@@ -122,8 +122,8 @@ public:
     Matrix orthonormal() const;
     Matrix cross(Matrix p) const;
 
-    T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
-    T cofactor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
+    T minor_at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
+    T cofactor_at(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
     Matrix<T> cofactor_matrix() const;
     Matrix<T> adjugate() const;
 
