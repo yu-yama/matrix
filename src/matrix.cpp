@@ -734,6 +734,8 @@ Matrix<T> Matrix<T>::orthonormal() const {
             vector<T> temp3 = vprojection(temp1.at_column(j), temp2.at_column(jj));
             for (typename vector<T>::size_type i = 0; i < n; ++i) temp2.at(i, j) -= temp3.at(i);
         }
+        double temp4 = vnorm(at_column(j));
+        for (typename vector<T>::size_type i = 0; i < n; ++i) temp2.at(i, j) /= temp4;
     }
     return temp2;
 }
