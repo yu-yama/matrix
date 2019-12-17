@@ -609,6 +609,13 @@ T Matrix<T>::rank() const {
     return get<2>(gauss_count());
 }
 
+template <typename T>
+T norm_squared(vector<T> p) {
+    T ans = 0;
+    for (typename vector<T>::size_type i = 0; i < p.size(); ++i) ans += p.at(i) * p.at(i);
+    return ans;
+}
+
 template <class T>
 T Matrix<T>::norm_squared() const {
     if (n != 1 && m != 1) {
@@ -620,6 +627,11 @@ T Matrix<T>::norm_squared() const {
     T ans = 0;
     for (typename vector<T>::size_type i = 0; i < n; ++i) ans += at(i, 0) * at(i, 0);
     return ans;
+}
+
+template <typename T>
+double norm(vector<T> p) {
+    return sqrt((double)norm_squared(p));
 }
 
 template <class T>
