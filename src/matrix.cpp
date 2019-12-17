@@ -726,17 +726,17 @@ Matrix<T> Matrix<T>::basis() const {
     return temp1;
 }
 
-// template <class T>
-// Matrix<T> Matrix<T>::orthonormal() const {
-//     Matrix<T> temp1 = transpose(), temp2 = temp1;
-//     for (typename vector<T>::size_type i = 0; i < n; ++i) {
-//         for (typename vector<T>::size_type ii = 0; ii < i; ++ii) {
-//             Matrix<T> temp3 = temp1.at_row(i).projection(temp2.at_row(ii));
-//             for (typename vector<T>::size_type j = 0; j < m; ++j) temp2.at(i, j) -= temp3.at(0, j);
-//         }
-//     }
-//     return temp2;
-// }
+template <class T>
+Matrix<T> Matrix<T>::orthonormal() const {
+    Matrix<T> temp1(*this), temp2(*this);
+    for (typename vector<T>::size_type j = 0; j < m; ++j) {
+        for (typename vector<T>::size_type jj = 0; jj < j; ++jj) {
+            vector<T> temp3 = vprojection(temp1.at_column(j), temp2.at_column(jj));
+            for (typename vector<T>::size_type i = 0; i < n; ++i) temp2.at(i, j) -= temp3.at(i);
+        }
+    }
+    return temp2;
+}
 
 template <class T>
 vector<T> vcross(vector<T> p, vector<T> q) {

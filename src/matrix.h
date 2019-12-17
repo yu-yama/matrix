@@ -119,7 +119,7 @@ public:
     T dot(Matrix p) const;
     bool orthogonal(Matrix p) const;
     Matrix projection(Matrix p) const;
-    // Matrix orthonormal() const;
+    Matrix orthonormal() const;
     Matrix cross(Matrix p) const;
 
     T minor(typename std::vector<T>::size_type y, typename std::vector<T>::size_type x) const;
