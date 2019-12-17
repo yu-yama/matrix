@@ -729,13 +729,21 @@ Matrix<T> Matrix<T>::basis() const {
 template <class T>
 Matrix<T> Matrix<T>::orthonormal() const {
     Matrix<T> temp1(*this), temp2(*this);
+    vector<typename vector<T>::size_type> temp6;
     for (typename vector<T>::size_type j = 0; j < m; ++j) {
         for (typename vector<T>::size_type jj = 0; jj < j; ++jj) {
             vector<T> temp3 = vprojection(temp1.at_column(j), temp2.at_column(jj));
             for (typename vector<T>::size_type i = 0; i < n; ++i) temp2.at(i, j) -= temp3.at(i);
         }
         double temp4 = vnorm(at_column(j));
-        for (typename vector<T>::size_type i = 0; i < n; ++i) temp2.at(i, j) /= temp4;
+        bool temp5 = false;
+        for (typename vector<T>::size_type i = 0; i < n; ++i) if (temp2.at(i, j)) temp2.at(i, j) /= temp4, temp5 = true;
+        if (temp5) temp6.push_back(j);
+    }
+    while (temp6.size()) {
+        typename vector<T>::size_type temp7 = temp6.back();
+        temp2.delete_column(temp7);
+        temp6.pop_back();
     }
     return temp2;
 }
