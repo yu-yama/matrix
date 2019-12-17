@@ -678,6 +678,11 @@ double Matrix<T>::angle(Matrix<T> p) const {
 
 template <class T>
 T vdot(vector<T> p, vector<T> q) {
+    if (p.size() != q.size()) {
+        ostringstream errMsg;
+        errMsg << "Sizes of vectors do not match (" << p.size() << ", " << q.size() << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
     T ans = 0;
     for (typename vector<T>::size_type i = 0; i < p.size(); ++i) ans += p.at(i) * q.at(i);
     return ans;
