@@ -1,12 +1,12 @@
 #ifndef ___MATRIX_INCLUDED_
 #define ___MATRIX_INCLUDED_
 
-#include <string>
-#include <iostream>
-#include <vector>
-#include <map>
 #include <cmath>
+#include <iostream>
+#include <map>
+#include <string>
 #include <tuple>
+#include <vector>
 
 template <typename T>
 class Matrix;

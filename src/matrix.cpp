@@ -1,10 +1,10 @@
-#include <iostream>
-#include <sstream>
-#include <vector>
-#include <string>
 #include <algorithm>
-#include <map>
 #include <cmath>
+#include <iostream>
+#include <map>
+#include <sstream>
+#include <string>
+#include <vector>
 #include "matrix.h"
 
 using namespace std;
