@@ -324,6 +324,16 @@ void Matrix<T>::resize(typename vector<T>::size_type nn, typename vector<T>::siz
 }
 
 template <class T>
+void Matrix<T>::resize(typename vector<T>::size_type nn, typename vector<T>::size_type mm, bool copy) {
+    if (copy) resize_skip(nn, mm, n, m);
+    else {
+        mat = vector<T>(nn * mm);
+        n = nn;
+        m = mm;
+    }
+}
+
+template <class T>
 Matrix<T> Matrix<T>::operator+() const {
     return *this;
 }

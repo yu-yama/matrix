@@ -67,6 +67,7 @@ public:
 
     void resize(typename std::vector<T>::size_type nn);
     void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm);
+    void resize(typename std::vector<T>::size_type nn, typename std::vector<T>::size_type mm, bool copy);
     Matrix  operator+() const;
     Matrix  operator-() const;
 
