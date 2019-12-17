@@ -709,7 +709,7 @@ bool Matrix<T>::orthogonal(Matrix<T> p) const {
 
 template <class T>
 vector<T> vprojection(vector<T> p, vector<T> q) {
-    return vscalar_mult(q, vdot(p, q) / vnorm_squared(q));
+    return vscalar_mult(q, (T)(vdot(p, q) / vnorm_squared(q)));
 }
 
 template <class T>
