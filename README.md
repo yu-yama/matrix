@@ -162,7 +162,6 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * `gauss_jordan()` – returns an augmented matrix after applying Gauss-Jordan elimination
 
 ## V. Features to be added in the (near) future
-* `orthonormal()` member function (Gram-Schmidt process)
 * QR-decomposition, QR-algorithm
 * Eigenvalue, eigenvector, eigenbasis, and eigenspace
 * Diagonalization
