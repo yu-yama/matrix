@@ -1,0 +1,20 @@
+name: Matrix Library Build & Run Check
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+    name: building test file
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: yu-yama/matrix/src@master
+    - name: compile
+      run: make test
+    - name: run & check
+      run: make run
+    - name: cleanup
+      run: make clean
