@@ -617,6 +617,18 @@ T Matrix<T>::rank() const {
 }
 
 template <class T>
+vector<T> vdiff(vector<T> p, vector<T> q) {
+    if (p.size() != q.size()) {
+        ostringstream errMsg;
+        errMsg << "Sizes of vectors do not match (" << p.size() << ", " << q.size() << ")\n";
+        throw invalid_argument(errMsg.str());
+    }
+    vector<T> t(p);
+    for (typename vector<T>::size_type i = 0; i < p.size(); ++i) t.at(i) -= q.at(i);
+    return t;
+}
+
+template <class T>
 T vnorm_squared(vector<T> p) {
     T ans = 0;
     for (typename vector<T>::size_type i = 0; i < p.size(); ++i) ans += p.at(i) * p.at(i);

@@ -155,6 +155,9 @@ Matrix<T> identity_matrix(typename std::vector<T>::size_type n, T val) {
 }
 
 template <typename T>
+std::vector<T> vdiff(std::vector<T> p, std::vector<T> q);
+
+template <typename T>
 T vnorm_squared(std::vector<T> p);
 
 template <typename T>
