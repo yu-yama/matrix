@@ -728,24 +728,23 @@ Matrix<T> Matrix<T>::basis() const {
 
 template <class T>
 Matrix<T> Matrix<T>::orthonormal() const {
-    Matrix<T> temp2(*this);
-    vector<typename vector<T>::size_type> temp6;
+    Matrix<T> temp(*this);
+    vector<typename vector<T>::size_type> zero_columns;
     for (typename vector<T>::size_type j = 0; j < m; ++j) {
         for (typename vector<T>::size_type jj = 0; jj < j; ++jj) {
-            vector<T> temp3 = vprojection(at_column(j), temp2.at_column(jj));
-            for (typename vector<T>::size_type i = 0; i < n; ++i) temp2.at(i, j) -= temp3.at(i);
+            vector<T> proj = vprojection(at_column(j), temp.at_column(jj));
+            for (typename vector<T>::size_type i = 0; i < n; ++i) temp.at(i, j) -= proj.at(i);
         }
-        double temp4 = vnorm(at_column(j));
-        bool temp5 = false;
-        for (typename vector<T>::size_type i = 0; i < n; ++i) if (temp2.at(i, j)) temp2.at(i, j) /= temp4, temp5 = true;
-        if (temp5) temp6.push_back(j);
+        double column_norm = vnorm(at_column(j));
+        bool is_zero_column = true;
+        for (typename vector<T>::size_type i = 0; i < n; ++i) if (temp.at(i, j)) temp.at(i, j) /= column_norm, is_zero_column = false;
+        if (is_zero_column) zero_columns.push_back(j);
     }
-    while (temp6.size()) {
-        typename vector<T>::size_type temp7 = temp6.back();
-        temp2.delete_column(temp7);
-        temp6.pop_back();
+    while (zero_columns.size()) {
+        temp.delete_column(zero_columns.back());
+        zero_columns.pop_back();
     }
-    return temp2;
+    return temp;
 }
 
 template <class T>
