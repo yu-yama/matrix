@@ -24,6 +24,7 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * Default constructor `Matrix()` – generates a matrix with size `0 x 0`
 * Constructor `Matrix(n)` – generates a column vector with the specified size, `n`
 * Constructor `Matrix(n, m)` – generates an `n x m` matrix
+* Constructor `Matrix(vector<T>)` – generates the specialized column vector
 * Constructor `Matrix(vector< vector<T> >)` – generates a matrix that the specified vector is converted into. The number of columns will be equal to the greatest number of columns in the specified vector, and elements not contained in the specified vector will be filled with `0`.
 * Constructor `Matrix(vector<T>, n)` – generates a matrix that the specified vector is converted into, by folding the vector by every n elements
 * Copy constructor `Matrix(Matrix&)` – generates an identical matrix (deep copy)
@@ -55,6 +56,7 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * `delete_columns(p, q)` – deletes `q` consecutive columns from the `p`-th column of a matrix, and consequently, decreases the indexes of columns after the inserted column by `q`; throws a `length_error` exception when the matrix does not have at least `q` columns
 * `resize(nn)` – changes the number of rows of a matrix to `nn` and copies the elements contained in both matrices before and after this method
 * `resize(nn, mm)` – changes the number of rows of a matrix to `nn` and the number of columns to `mm`, and copies the elements contained in both matrices before and after this method
+* `resize(nn, mm, bool copy)` – equivalent to `resize(nn, mm)` if `copy = true`, resizes a matrix without copying otherwise
 
 ##### iii. Unary Operators
 * `+` – returns the matrix itself
@@ -105,7 +107,8 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * `angle(Matrix<T>)` – returns the angle between two matrices in `double` type (in radian)
 * `dot(Matrix<T>)` – returns a dot product of two matrices; throws an `invalid_argument` exception when two matrices are neither both row vectors nor both column vectors, or have different number of elements
 * `orthogonal(Matrix<T>)` – returns whether two matrices are orthogonal or not
-* `projection(Matrix<T>)` – returns a projection of a matrix on a specified matrix
+* `projection(Matrix<T>)` – returns a projection of a matrix on the specified matrix
+* `orthonormal()` – returns an orthonormal basis of a matrix's column space
 * `cross(Matrix<T>)` – returns a cross product of two matrices; throws an `invalid_argument` exception when two matrices are neither both `3 x 1` column vectors nor `1 x 3` row vectors
 * `minor(y, x)` – returns a minor, _M<sub>yx</sub>_; throws an `invalid_argument` exception when the matrix is not a square matrix
 * `cofactor(y, x)` – returns a cofactor, _C<sub>yx</sub>_
@@ -113,7 +116,9 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 * `adjugate()` – returns the adjugate
 * `transpose()` – returns the transpose
 
-##### ix. Casting Method
+##### ix. Casting Methods
+* `to_1d_vector()` – returns a one-dimensional vector representing a row or column vector; throws an `invalid_argument` exception when the matrix is neither row nor column vector
+* `to_2d_vector()` – returns a two-dimensional vector representing the matrix
 * `to_string()` – returns a string representing a matrix in CSV format
 
 #### c. Non-Member Functions
@@ -123,6 +128,18 @@ Template classes `Matrix<T>` and `AugmentedMatrix<T>` are provided. In `src/test
 
 ##### ii. Identity Matrix
 * `identity_matrix(n, val)` – returns the identity matrix of degree `n` in the type of `val`
+
+##### iii. Vector Calculations
+* `vdiff(vector<T> p, vector<T> q)` – returns `p - q`; throws an `invalid_argument` exception if `p` and `q` have different sizes
+* `vscalar_mult(vector<T> p, T q)` – returns `q * p`
+* `vnorm_squared(vector<T> p)` – returns the square of the norm of `p`
+* `vnorm(vector<T> p)` – returns the norm of `p` in `double` type
+* `vdistance(vector<T> p, vector<T> q)` – returns the norm of `p - q` in `double` type
+* `vangle(vector<T> p, vector<T> q)` – returns the angle between `p` and `q` in `double` type (in radian)
+* `vdot(vector<T> p, vector<T> q)` – returns the dot product of p and q; throws an `invalid_argument` exception if `p` and `q` have different sizes
+* `vorthogonal(vector<T> p, vector<T> q)` – returns whether `p` and `q` are orthogonal or not
+* `vprojection(vector<T> p, vector<T> q)` – returns the projection of `p` on `q`
+* `vcross(vector<T> p, vector<T> q)` – returns the cross product of p and q; throws an `invalid_argument` exception if either `p` or `q` does not have exactly three elements
 
 ### 2. Augmented Matrix template class `AugmentedMatrix<T>`
 #### a. Member Variables
