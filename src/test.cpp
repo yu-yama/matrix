@@ -56,7 +56,7 @@ int main() {
 
     Matrix<double> aa1({{1, 3, -2, 0, 2, 0}, {2, 6, -5, -2, 4, -3}, {0, 0, 5, 10, 0, 15}, {2, 6, 0, 8, 4, 18}});
     cout << "000360\n" << aa1.gauss() << aa1.gauss_jordan() << aa1.rank() << endl;
-    Matrix<double> aa2({{0}, {-1}, {5}, {6}});
+    Matrix<double> aa2({0, -1, 5, 6});
     AugmentedMatrix<double> aa(aa1, aa2);
     cout << "000370\n" << aa.left() << aa.right();
     cout << "000390\n" << aa.gauss().left() << aa.gauss().right();
@@ -68,8 +68,8 @@ int main() {
     cout << "000430\n" << ab.gauss_jordan().left() << ab.gauss_jordan().right();
     cout << "000450\n" << ab1.inv();
 
-    Matrix<double> ac1({{1, 2, 3}});
-    Matrix<double> ac2({{2, 5, 3}});
+    Matrix<double> ac1(vector< vector<double> >({{1, 2, 3}}));
+    Matrix<double> ac2(vector< vector<double> >({{2, 5, 3}}));
     cout << "000455\n" << ac1.norm() << endl;
     cout << "000460\n" << ac2.norm() << endl;
     cout << "000465\n" << ac1.distance(ac2) << endl;
@@ -78,8 +78,8 @@ int main() {
     cout << "000510\n" << ac1.cross(ac2);
     cout << "000530\n" << ac2.cross(ac1);
 
-    Matrix<double> ad1({{1}, {2}, {3}});
-    Matrix<double> ad2({{2}, {5}, {3}});
+    Matrix<double> ad1(vector< vector<double> >({{1}, {2}, {3}}));
+    Matrix<double> ad2(vector< vector<double> >({{2}, {5}, {3}}));
     cout << "000535\n" << ac1.norm() << endl;
     cout << "000540\n" << ac2.norm() << endl;
     cout << "000545\n" << ac1.distance(ac2) << endl;
