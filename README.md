@@ -2,6 +2,9 @@
 
 This library provides matrices computation features with a header file, `src/matrix.h`, and a cpp file `src/matrix.cpp`.
 
+## License Information
+The license for this repository is given in the LICENSE file.
+
 ## I. How to use
 Add `#include "matrix.h"` in the preamble of your source code, then link your object file with the object file of `src/matrix.cpp`.
 
