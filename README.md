@@ -1,5 +1,7 @@
 # Matrix Library for C++
 
+![GitHub Action Build Status on Ubuntu](https://github.com/yu-yama/matrix/workflows/Matrix%20Library%20Build%20%26%20Run%20Check/badge.svg)
+
 This library provides matrices computation features with a header file, `src/matrix.h`, and a cpp file `src/matrix.cpp`.
 
 ## License Information
